@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+body {
+    font-family: "Nunito Sans", sans-serif;
+    background-color: #fff9fb;
+}
+
+.heading-font {
+    font-family: "Poppins", sans-serif;
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+    display: none;
+    width: 100%;
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+/* Touch target sizes */
+.touch-target {
+    min-width: 48px;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+    html {
+        font-size: 15px;
+    }
+}

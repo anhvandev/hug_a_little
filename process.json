@@ -1,0 +1,20 @@
+{
+  "apps": [
+    {
+      "name": "hug_a_little",
+      "script": "./run-server.js",
+      "instances": 1,
+      "autorestart": true,
+      "watch": ["dist"],
+      "exec_mode": "cluster",
+      "ignore_watch": [
+        "node_modules"
+      ],
+      "max_memory_restart": "2G",
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": 5690
+      }
+    }
+  ]
+}

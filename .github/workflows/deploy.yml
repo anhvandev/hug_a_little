@@ -21,7 +21,7 @@ jobs:
             git checkout main && git fetch --all && git reset --hard origin/main
             git pull origin main
 
-            # yarn install --production --frozen-lockfile
-            # yarn build
+            yarn install --production --frozen-lockfile
+            yarn build
             # pm2 restart process.json --env production
 
