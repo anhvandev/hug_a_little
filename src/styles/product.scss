@@ -1,0 +1,35 @@
+.product-gallery {
+    position: relative;
+}
+
+.thumbnail-container {
+    scrollbar-width: none;
+}
+
+.thumbnail-container::-webkit-scrollbar {
+    display: none;
+}
+
+.thumbnail.active {
+    border: 2px solid #f9a8d4;
+}
+
+.color-swatch.selected {
+    box-shadow:
+        0 0 0 2px white,
+        0 0 0 4px #f9a8d4;
+}
+
+.size-option.selected {
+    background-color: #f9a8d4;
+    color: white;
+}
+
+.review-star {
+    color: #ffd1dc;
+}
+
+.review-star.filled {
+    color: #f9a8d4;
+}
+
