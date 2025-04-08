@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Footer from '../components/Footer.astro';
 import "../styles/index.scss";
 ---
 
@@ -140,7 +141,7 @@ import "../styles/index.scss";
         >
           <div class="responsive-img-container">
             <img
-              src="src/assets/website_image/2.png"
+              src="public/website_image/2.png"
               alt="Baby Tee Pink"
             />
           </div>
@@ -163,7 +164,7 @@ import "../styles/index.scss";
         >
           <div class="responsive-img-container">
             <img
-              src="src/assets/website_image/19.png"
+              src="public/website_image/19.png"
               alt="Pjyama cổ tròn"
             />
           </div>
@@ -186,7 +187,7 @@ import "../styles/index.scss";
         >
           <div class="responsive-img-container">
             <img
-              src="src/assets/website_image/20.png"
+              src="public/website_image/20.png"
               alt="Pjyama cổ tròn nơ"
             />
           </div>
@@ -284,7 +285,7 @@ import "../styles/index.scss";
         <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
           <div class="responsive-img-container">
             <img
-              src="src/assets/website_image/material.jpg"
+              src="public/website_image/material.jpg"
               alt="Premium Materials"
             />
           </div>
@@ -353,142 +354,7 @@ import "../styles/index.scss";
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-white py-8 sm:py-12">
-    <div class="container mx-auto px-4 sm:px-6">
-      <div class="flex flex-col md:flex-row justify-between">
-        <div class="mb-8 md:mb-0">
-          <div class="text-2xl font-bold text-pink-300 mb-4 heading-font">
-            Hug A Little
-          </div>
-          <p class="text-gray-600 max-w-xs text-sm sm:text-base">
-            Điểm đến của bạn cho đồ ngủ dễ thương và ấm cúng khiến mỗi đêm trở nên
-            đặc biệt.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-2 gap-6 sm:gap-8">
-          <div>
-            <h3 class="text-base sm:text-lg font-semibold text-gray-800 mb-4">
-              Shop
-            </h3>
-            <ul class="space-y-2">
-              <li>
-                <a
-                  href="#"
-                  class="text-gray-600 hover:text-pink-300 transition text-sm sm:text-base"
-                  >All Products</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-gray-600 hover:text-pink-300 transition text-sm sm:text-base"
-                  >New Arrivals</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-gray-600 hover:text-pink-300 transition text-sm sm:text-base"
-                  >Best Sellers</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-gray-600 hover:text-pink-300 transition text-sm sm:text-base"
-                  >Collections</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <!-- <div>
-            <h3 class="text-base sm:text-lg font-semibold text-gray-800 mb-4">
-              Help
-            </h3>
-            <ul class="space-y-2">
-              <li>
-                <a
-                  href="#"
-                  class="text-gray-600 hover:text-pink-300 transition text-sm sm:text-base"
-                  >FAQs</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-gray-600 hover:text-pink-300 transition text-sm sm:text-base"
-                  >Shipping & Returns</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-gray-600 hover:text-pink-300 transition text-sm sm:text-base"
-                  >Size Guide</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-gray-600 hover:text-pink-300 transition text-sm sm:text-base"
-                  >Contact Us</a
-                >
-              </li>
-            </ul>
-          </div> -->
-
-          <div>
-            <h3 class="text-base sm:text-lg font-semibold text-gray-800 mb-4">
-              Kênh của chúng tớ
-            </h3>
-            <div class="flex space-x-3 mb-3 ">
-              <a
-                href="https://www.instagram.com/hug__a__little/"
-                class="text-gray-600 hover:text-pink-300 transition touch-target"
-                ><i class="fab fa-instagram"></i></a
-              >
-              <a
-                href="https://www.facebook.com/hug.a.little"
-                class="text-gray-600 hover:text-pink-300 transition touch-target"
-                ><i class="fab fa-facebook"></i></a
-              >
-              <a
-                href="https://www.tiktok.com/@hug_a_little?lang=vi-VN"
-                class="text-gray-600 hover:text-pink-300 transition touch-target"
-                ><i class="fab fa-tiktok"></i></a
-              >
-            </div>
-            <p class="text-gray-600 text-sm sm:text-base">
-              hugalittle1@gmail.com
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="border-t border-gray-200 mt-8 sm:mt-12 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center"
-      >
-        <p class="text-gray-500 mb-4 md:mb-0 text-xs sm:text-sm">
-          © 2025 Hug A Little. All rights reserved.
-        </p>
-        <div class="flex space-x-4 sm:space-x-6">
-          <a
-            href="#"
-            class="text-gray-500 hover:text-pink-300 transition text-xs sm:text-sm"
-            >Privacy Policy</a
-          >
-          <a
-            href="#"
-            class="text-gray-500 hover:text-pink-300 transition text-xs sm:text-sm"
-            >Terms of Service</a
-          >
-        </div>
-      </div>
-    </div>
-  </footer>
+  <Footer />
 
   <script>
     // Mobile menu toggle
