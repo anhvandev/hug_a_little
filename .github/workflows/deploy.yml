@@ -24,4 +24,5 @@ jobs:
             yarn install --production --frozen-lockfile
             yarn build
             # pm2 restart process.json --env production
+            docker compose up -d
 
