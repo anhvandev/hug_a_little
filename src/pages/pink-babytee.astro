@@ -7,10 +7,15 @@ import { variationIndex } from '../store/product';
 
 
 import directus from "../../lib/directus";
-import { readSingleton, readCollections } from "@directus/sdk";
-// const global = await directus.request(readSingleton("global"));
-const result = await directus.request(readCollections());
-console.log(result)
+import { readSingleton } from "@directus/sdk";
+try {
+  const allPosts = await directus.request(readSingleton('globals'));
+  console.log(allPosts)
+  // const loginResult = await directus.request(login("K9v9z@example.com", "123456"))
+  // console.log(loginResult)
+} catch (error) {
+  console.log(error)
+}
 
 const pathImage = 'website_image/';
 

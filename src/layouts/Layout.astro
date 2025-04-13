@@ -2,6 +2,31 @@
 import { ClientRouter } from "astro:transitions";
 import "../styles/style.css";
 const { title } = Astro.props;
+
+import directus from "../../lib/directus";
+import type { Global } from "../../lib/directus";
+import { readSingleton } from "@directus/sdk";
+
+let global: Global;
+try {
+  global = await directus.request(readSingleton("globals"));
+} catch (error) {
+  console.log(error);
+  global = {
+    id: "",
+    accent_color: "",
+    description: "",
+    directus_url: "",
+    favicon: "",
+    logo: "",
+    logo_dark_mode: "",
+    openai_api_key: "",
+    social_links: [],
+    tagline: "",
+    title: "Hug a Little",
+    url: "",
+  };
+}
 ---
 
 <!doctype html>
@@ -12,14 +37,14 @@ const { title } = Astro.props;
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>{title || "Hug A Little"}</title>
+    <title>{title || global.title}</title>
     <meta
       name="title"
-      content="Hug A Little"
+      content={global.title}
     />
     <meta
       name="description"
-      content="Make your sleep gentle "
+      content="Make your sleep gentle"
     />
     <link
       rel="stylesheet"
