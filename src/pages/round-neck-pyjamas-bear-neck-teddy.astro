@@ -10,18 +10,18 @@ const pathImage = 'website_image/';
 
 const relatedProduct = [{
   name: 'Pyjamas Ngắn Gấu Nhỏ Vườn Hoa',
-  price: '259.000',
+  price: '289.000',
   img: '24.png',
   link: 'round-neck-pyjamas-bear-teddy',
 }, {
   name: 'Pyjamas Ngắn Gấu Tím Dịu Dàng Có Nơ',
-  price: '279.000',
+  price: '299.000',
   img: '22.png',
   link: 'round-neck-pyjamas-bear-neck-paninton'
 },
 {
-  name: 'Pyjamas Ngắn Cún Hồng Ngọt Ngào Có Nơ',
-  price: '279.000',
+  name: 'Pyjamas Ngắn Gấu Hồng Có Nơ',
+  price: '299.000',
   img: '23.png',
   link: 'round-neck-pyjamas-bear-neck-bo'
 }];
@@ -38,9 +38,8 @@ const listVariations = [
 ]
 const content = {
   name: 'Pyjamas Ngắn Gấu Nhỏ Vườn Hoa Có Nơ',
-  price: '179.000',
-  rawPrice: '320.000',
-  discount: '12%',
+  price: '299.000',
+  rawPrice: '412.000',
   description: [
     '° Chất liệu: Vải cotton thô tự nhiên, mỏng nhẹ, thoáng khí, thấm hút mồ hôi tốt mềm mại và thoáng mát, mang lại cảm giác dễ chịu khi mặc.',
     '° Thiết kế thời trang: Set ngủ Basic đơn giản, có hoạ tiết gấu và nơ dễ thương, thoả mái khi mặc.',
@@ -129,11 +128,11 @@ const content = {
           </div> -->
 
           <div class="mb-6">
-            <span class="text-2xl font-bold text-pink-300">{content.price}</span>
-            <span class="ml-2 text-gray-500 line-through">{content.rawPrice}</span>
+            <span class="text-2xl font-bold text-pink-300">{content.price + '.000'}</span>
+            <span class="ml-2 text-gray-500 line-through">{content.rawPrice + '.000'}</span>
             <span
               class="ml-2 text-pink-300 bg-pink-100 px-2 py-1 rounded text-sm"
-              >{content.discount} OFF</span
+              >{Math.round((Number(content.price) / Number(content.rawPrice) * 100))}% OFF</span
             >
           </div>
           <p class="text-gray-700 font-bold mb-2">

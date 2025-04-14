@@ -9,21 +9,15 @@ import Purchase from "../components/Purchase.astro";
 const pathImage = 'website_image/';
 
 const relatedProduct = [{
-  name: 'Pyjama Cổ Tròn',
-  price: '259.000',
-  img: '7.png',
-  link: '',
+  name: 'Pyjamas Ngắn Gấu Tím Dịu Dàng Có Nơ',
+  price: '299.000',
+  img: '22.png',
+  link: 'round-neck-pyjamas-bear-neck-paninton'
 }, {
-  name: 'Pyjama Cổ Tròn Nơ',
-  price: '279.000',
-  img: '10.png',
-  link: ''
-},
-{
-  name: 'Bộ Hai Dây Nhí',
-  price: '279.000',
-  img: '10.png',
-  link: ''
+  name: 'Pyjamas Ngắn Gấu Nhỏ Vườn Hoa',
+  price: '289.000',
+  img: '24.png',
+  link: 'round-neck-pyjamas-bear-teddy',
 }];
 
 const listVariations = [
@@ -62,8 +56,8 @@ const listVariations = [
 ]
 const content = {
   name: 'Baby Tee Hồng',
-  price: '179.000',
-  rawPrice: '320.000',
+  price: '179',
+  rawPrice: '300',
   discount: '12%',
   description: [
     '° Chất liệu: Vải thun gân cotton lạnh hàn 4 chiều mềm mại và thoáng mát, mang lại cảm giác dễ chịu khi mặc.',
@@ -138,11 +132,11 @@ const content = {
           </h1>
 
           <div class="mb-6">
-            <span class="text-2xl font-bold text-pink-300">{content.price}</span>
-            <span class="ml-2 text-gray-500 line-through">{content.rawPrice}</span>
+            <span class="text-2xl font-bold text-pink-300">{content.price + '.000'}</span>
+            <span class="ml-2 text-gray-500 line-through">{content.rawPrice + '.000'}</span>
             <span
               class="ml-2 text-pink-300 bg-pink-100 px-2 py-1 rounded text-sm"
-              >{content.discount} OFF</span
+              >{Math.round((Number(content.price) / Number(content.rawPrice) * 100))}% OFF</span
             >
           </div>
           <p class="text-gray-700 font-bold mb-2">
@@ -432,8 +426,11 @@ const content = {
 
       <div class={`grid grid-cols-5 md:grid-cols-5 gap-4 sm:gap-6`}>
         {relatedProduct.map((otherProduct) => (
-            <div
+            <a
+              href={otherProduct.link}
+              target="_blank"
               class="product-card bg-white rounded-lg overflow-hidden shadow-sm transition duration-300 hover:shadow-md"
+              
             >
               <div class="relative pb-[125%] overflow-hidden">
                 <img
@@ -453,7 +450,7 @@ const content = {
                 </h3>
                 <p class="text-pink-300 font-medium">{otherProduct.price}</p>
               </div>
-        </div>
+        </a>
         ))}
       </div>
     </div>

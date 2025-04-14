@@ -39,8 +39,8 @@ const listVariations = [
 ]
 const content = {
   name: 'Pyjamas Ngắn Gấu Tím Dịu Dàng',
-  price: '179.000',
-  rawPrice: '320.000',
+  price: '289.000',
+  rawPrice: '400.000',
   discount: '12%',
   description: [
     '° Chất liệu: Vải cotton thô tự nhiên, mỏng nhẹ, thoáng khí, thấm hút mồ hôi tốt mềm mại và thoáng mát, mang lại cảm giác dễ chịu khi mặc.',
@@ -129,11 +129,11 @@ const content = {
           </div> -->
 
           <div class="mb-6">
-            <span class="text-2xl font-bold text-pink-300">{content.price}</span>
-            <span class="ml-2 text-gray-500 line-through">{content.rawPrice}</span>
+            <span class="text-2xl font-bold text-pink-300">{content.price + '.000'}</span>
+            <span class="ml-2 text-gray-500 line-through">{content.rawPrice + '.000'}</span>
             <span
               class="ml-2 text-pink-300 bg-pink-100 px-2 py-1 rounded text-sm"
-              >{content.discount} OFF</span
+              >{Math.round((Number(content.price) / Number(content.rawPrice) * 100))}% OFF</span
             >
           </div>
           <p class="text-gray-700 font-bold mb-2">
