@@ -4,33 +4,30 @@ import "../styles/style.css";
 const { title } = Astro.props;
 
 import directus from "../../lib/directus";
-import type { Global } from "../../lib/directus";
+import type { Globals } from "../../lib/directus";
 import { readSingleton } from "@directus/sdk";
 
-let global: Global;
+let global: Globals;
 try {
   global = await directus.request(readSingleton("globals"));
 } catch (error) {
   console.log(error);
   global = {
-    id: "",
-    accent_color: "",
+    title: "",
+    url: "",
+    accentColor: "",
     description: "",
-    directus_url: "",
     favicon: "",
     logo: "",
-    logo_dark_mode: "",
-    openai_api_key: "",
-    social_links: [],
+    logoDarkMode: "",
+    socialLinks: [],
     tagline: "",
-    title: "Hug a Little",
-    url: "",
   };
 }
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -44,7 +41,7 @@ try {
     />
     <meta
       name="description"
-      content="Make your sleep gentle"
+      content={global.description}
     />
     <link
       rel="stylesheet"

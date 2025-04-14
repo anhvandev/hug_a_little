@@ -1,298 +1,201 @@
 import { createDirectus, rest, } from '@directus/sdk';
-// types/schema.ts
 
-export interface BlockButton  {
+
+// Base interfaces
+interface BaseModel {
     id: string;
-    button_group?: string;
     sort?: number;
-    type?: 'page' | 'post' | 'url';
+}
+
+interface TimestampModel {
+    date_created?: string;
+    date_updated?: string;
+    user_created?: string;
+    user_updated?: string;
+}
+
+// SEO interface
+interface SEO {
+    title?: string;
+    description?: string;
+    image?: string;
+    noIndex?: boolean;
+    noFollow?: boolean;
+}
+
+// Button interfaces
+interface Button extends BaseModel {
+    type: 'page' | 'post' | 'url';
+    label: string;
+    variant: 'default' | 'outline' | 'soft' | 'ghost' | 'link';
+    url?: string;
     page?: string;
     post?: string;
-    url?: string;
-    label?: string;
-    variant?: 'default' | 'outline' | 'soft' | 'ghost' | 'link';
 }
 
-export interface BlockGalleryItem  {
-    id: string;
-    block_gallery?: string;
-    directus_file?: string;
-    sort?: number;
+interface ButtonGroup extends BaseModel {
+    buttons: Button[];
 }
 
-export interface BlockHero  {
-    id: string;
+// Block interfaces
+interface BlockHero extends BaseModel {
+    tagline?: string;
+    headline: string;
+    description?: string;
+    image?: string;
+    buttonGroup?: ButtonGroup;
+    layout: 'image_left' | 'image_center' | 'image_right';
+}
+
+interface BlockRichText extends BaseModel {
     tagline?: string;
     headline?: string;
-    description?: string;
-    button_group?: string;
-    image?: string;
-    layout?: 'image_left' | 'image_center' | 'image_right';
-    alignment?: 'left' | 'center' | 'right';
+    content: string;
+    alignment: 'left' | 'center';
 }
 
-export interface BlockPricingCard  {
-    id: string;
-    title?: string;
+interface BlockForm extends BaseModel {
+    tagline?: string;
+    headline?: string;
+    form: string; // Reference to Form
+}
+
+interface BlockGallery extends BaseModel {
+    tagline?: string;
+    headline?: string;
+    items: {
+        file: string;
+        sort?: number;
+    }[];
+}
+
+interface BlockPricing extends BaseModel {
+    tagline?: string;
+    headline?: string;
+    pricingCards: PricingCard[];
+}
+
+interface PricingCard extends BaseModel {
+    title: string;
+    description?: string;
+    price: string;
     badge?: string;
-    price?: string;
-    is_highlighted?: boolean;
-    description?: string;
-    features?: string[];
-    button?: string;
-    pricing?: string;
-    sort?: number;
+    features: string[];
+    isHighlighted?: boolean;
+    button?: Button;
 }
 
-export interface Category  {
-    id: string;
-    sort?: number;
-    title?: string;
-    is_active: boolean;
-    parent_category?: string;
-    sub_categories?: Category[];
-}
-
-export interface CustomerAddress  {
-    id: string;
-    sort?: number;
-    customer?: string;
-    is_active: boolean;
-    is_shipping: boolean;
-    is_billing: boolean;
-    address_line_1?: string;
-    address_line_2?: string;
-    city?: string;
-    state?: string;
-    postal_code?: string;
-    country_code?: string;
-}
-
-export interface FormField  {
-    id: string;
-    sort?: number;
-    form?: string;
-    name?: string;
-    type?: 'text' | 'textarea' | 'checkbox' | 'checkbox_group' | 'radio' | 'file' | 'select' | 'hidden';
-    label?: string;
-    placeholder?: string;
-    help?: string;
-    validation?: string;
-    required?: boolean;
-    width?: '100' | '67' | '50' | '33';
-    choices?: Array<{
-        text: string;
-        value: string;
-    }>;
-}
-
-export interface FormSubmissionValue  {
-    id: string;
-    form_submission?: string;
-    value?: string;
-    field?: string;
-    sort?: number;
-    file?: string;
-}
-
-export interface NavigationItem  {
-    id: string;
-    sort?: number;
-    navigation?: string;
-    title?: string;
-    type?: 'page' | 'post' | 'url' | 'group';
-    page?: string;
-    post?: string;
-    url?: string;
-    children?: NavigationItem[];
-    parent?: string;
-}
-
-export interface OrderItem  {
-    id: string;
-    order?: string;
-    sort?: number;
-    product?: string;
-    product_variant?: string;
-    quantity?: number;
-    price?: number;
-    subtotal?: number;
-    total?: number;
-}
-
-export interface Order  {
-    id: string;
-    user_created?: string;
-    date_created?: string;
-    user_updated?: string;
-    date_updated?: string;
-    canceled_at?: string;
-    completed_at?: string;
-    order_number?: string;
-    status: 'pending' | 'completed' | 'archived' | 'canceled';
-    fulfillment_status?: 'open' | 'in_progress' | 'fulfilled' | 'on_hold';
-    payment_status?: 'not_paid' | 'awaiting' | 'paid' | 'refunded';
-    customer?: string;
-    billing_address?: string;
-    shipping_address?: string;
-    line_items?: OrderItem[];
-    subtotal?: number;
-    tax_total?: number;
-    shipping_total?: number;
-    total?: number;
-}
-
-export interface PageBlock  {
-    id: string;
-    sort?: number;
-    page?: string;
-    item?: string;
-    collection?: string;
-    hide_block?: boolean;
-    background?: 'light' | 'dark';
-}
-
-export interface Page  {
-    id: string;
-    sort?: number;
+// Page & Post interfaces
+interface Page extends BaseModel, TimestampModel {
     title: string;
     permalink: string;
     status: 'draft' | 'in_review' | 'published';
-    published_at?: string;
-    description?: string;
-    blocks?: PageBlock[];
+    publishedAt?: string;
+    seo?: SEO;
+    blocks: (BlockHero | BlockRichText | BlockForm | BlockGallery | BlockPricing)[];
 }
 
-export interface BlockRichText  {
-    id: string;
-    tagline?: string;
-    headline?: string;
-    content?: string;
-    alignment?: 'left' | 'center';
-}
-
-export interface Customer  {
-    id: string;
-    user_created?: string;
-    is_subscribed?: boolean;
-    orders?: Order[];
-    password?: string;
-    date_created?: string;
-    user_updated?: string;
-    date_updated?: string;
-    first_name?: string;
-    last_name?: string;
-    email: string;
-    phone?: string;
-}
-
-export interface Post  {
-    id: string;
-    sort?: number;
+interface Post extends BaseModel, TimestampModel {
     title: string;
     slug: string;
     status: 'draft' | 'in_review' | 'published';
-    published_at?: string;
+    publishedAt?: string;
     description?: string;
+    image?: string;
+    content: string;
     author?: string;
-    image?: string;
-    content?: string;
+    seo?: SEO;
 }
 
-export interface ProductVariant  {
-    id: string;
-    product?: string;
-    sku?: string;
-    price?: number;
-    color?: string;
-    size?: string;
-    weight?: number;
-    weight_unit?: 'g' | 'kg' | 'lb' | 'oz';
-    image?: string;
+// Navigation interfaces
+interface NavigationItem extends BaseModel {
+    title: string;
+    type: 'page' | 'post' | 'url' | 'group';
+    url?: string;
+    page?: string;
+    post?: string;
+    parent?: string;
+    children?: NavigationItem[];
 }
 
-export interface TaxRate  {
-    id: string;
-    title?: string;
-    code?: string;
-    rate?: number;
+interface Navigation extends BaseModel {
+    title: string;
+    isActive: boolean;
+    items: NavigationItem[];
 }
 
-export interface BlockForm  {
-    id: string;
-    tagline?: string;
-    headline?: string;
-    form?: string;
+// Form interfaces
+interface FormField extends BaseModel {
+    name: string;
+    type: 'text' | 'textarea' | 'checkbox' | 'checkbox_group' | 'radio' | 'file' | 'select' | 'hidden';
+    label: string;
+    placeholder?: string;
+    help?: string;
+    required?: boolean;
+    validation?: string;
+    width: '100' | '67' | '50' | '33';
+    choices?: { text: string; value: string }[];
 }
 
-export interface Form  {
-    id: string;
-    sort?: number;
-    emails?: Array<{
+interface Form extends BaseModel {
+    title: string;
+    isActive: boolean;
+    submitLabel?: string;
+    onSuccess: 'redirect' | 'message';
+    successMessage?: string;
+    successRedirectUrl?: string;
+    fields: FormField[];
+    emails?: {
         to: string[];
         subject: string;
         message: string;
-    }>;
-    fields?: FormField[];
-    submissions?: FormSubmissionValue[];
-    submit_label?: string;
-    title?: string;
-    on_success?: 'redirect' | 'message';
-    is_active: boolean;
-    success_message?: string;
-    success_redirect_url?: string;
+    }[];
 }
 
-export interface Navigation  {
-    is_active: boolean;
-    title?: string;
-    id: string;
-    items?: NavigationItem[];
-}
-
-export interface Global  {
-    id: string;
-    openai_api_key?: string;
-    title?: string;
-    directus_url?: string;
-    url?: string;
-    logo?: string;
-    logo_dark_mode?: string;
-    favicon?: string;
-    accent_color?: string;
+// Global Settings interface
+interface Globals {
+    title: string;
     tagline?: string;
     description?: string;
-    social_links?: Array<{
-        service: string;
+    url: string;
+    logo?: string;
+    logoDarkMode?: string;
+    favicon?: string;
+    accentColor?: string;
+    socialLinks?: {
+        service: 'facebook' | 'instagram' | 'linkedin' | 'x' | 'vimeo' | 'youtube' | 'github' | 'discord' | 'docker';
         url: string;
-    }>;
+    }[];
 }
 
-export interface BlockPost  {
-    id: string;
-    tagline?: string;
-    headline?: string;
-    collection: string;
-    limit?: number;
-}
+export type {
+    Button,
+    ButtonGroup,
+    BlockHero,
+    BlockRichText,
+    BlockForm,
+    BlockGallery,
+    BlockPricing,
+    PricingCard,
+    Page,
+    Post,
+    NavigationItem,
+    Navigation,
+    FormField,
+    Form,
+    Globals,
+    SEO
+};
 
-export interface BlockPricing  {
-    id: string;
-    tagline?: string;
-    headline?: string;
-    pricing_cards?: BlockPricingCard[];
-}
-
-export interface BlockButtonGroup  {
-    id: string;
-    sort?: number;
-    buttons?: BlockButton[];
-}
 
 export interface Schema {
     posts: Post[];
-    globals: Global;
+    globals: Globals;
     pages: Page[];
+    pricing_cards: PricingCard[];
+    navigation_items: NavigationItem[];
+    navigations: Navigation[];
+    forms: Form[];
 }
 
 const directus = createDirectus<Schema>(import.meta.env.PUBLIC_URL).with(rest());

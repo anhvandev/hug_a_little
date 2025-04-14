@@ -1,8 +1,30 @@
 ---
+import directus from "../../lib/directus";
+import type { Page } from "../../lib/directus";
+import {
+  readItems,
+} from "@directus/sdk";
+
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
 import Navigation from "../components/Navigation.astro";
 import "../styles/index.scss";
+
+let indexPage: Page;
+try {
+  indexPage = await directus
+    .request(
+      readItems("pages", {
+        filter: {
+          permalink: { _eq: "/" },
+        },
+      })
+    )
+    .then((res: Page[]) => res[0])
+    .catch(() => ({}) as Page);
+} catch (error) {
+  console.log(error);
+}
 ---
 
 <Layout>
