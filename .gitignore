@@ -1,7 +1,7 @@
 # build output
 dist/
 # exclude all dist folders inside cms directory and its subdirectories
-!cms/**/dist/
+cms/
 
 # generated types
 .astro/
