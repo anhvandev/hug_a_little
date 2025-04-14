@@ -137,19 +137,6 @@ const content = {
             {content.name}
           </h1>
 
-          <!-- <div class="flex items-center mb-4">
-            <div class="flex mr-2">
-              <i class="fas fa-star review-star filled"></i>
-              <i class="fas fa-star review-star filled"></i>
-              <i class="fas fa-star review-star filled"></i>
-              <i class="fas fa-star review-star filled"></i>
-              <i class="fas fa-star review-star"></i>
-            </div>
-            <span class="text-gray-600 text-sm">(42 reviews)</span>
-            <span class="mx-2 text-gray-400">|</span>
-            <span class="text-gray-600 text-sm">500+ sold</span>
-          </div> -->
-
           <div class="mb-6">
             <span class="text-2xl font-bold text-pink-300">{content.price}</span>
             <span class="ml-2 text-gray-500 line-through">{content.rawPrice}</span>
@@ -167,21 +154,6 @@ const content = {
               <p class="text-gray-500  ml-2">{dataDescription}</p>
             ))}
           </p>
-
-          <!-- <div class="mb-6 mt-6">
-            <h3 class="text-sm font-semibold text-gray-800 mb-2">
-              Biến Thể: 
-            </h3>
-            <div class="flex space-x-12">
-              {listVariations.map((data, index) => (
-                <img class="rounded-sm w-30 h-37.5 cursor-pointer" 
-                data-popover-target="popover-default" src={pathImage + data.imgVariation} alt={data.name} 
-                onclick=`${changeVariations(index)}`
-                />
-              ))}
-            </div>
-          </div> -->
-          </div>
 
           <Purchase />
 
@@ -207,25 +179,31 @@ const content = {
   <section class="py-8 bg-white">
     <div class="container mx-auto px-4 sm:px-6">
       <div class="border-b border-gray-200">
-        <nav class="-mb-px flex space-x-8">
-          <button
-            id="details-tab"
-            class="tab-button active border-b-2 border-pink-300 text-pink-300 px-1 py-4 text-sm font-medium"
-          >
-            Chi tiết sản phẩm
-          </button>
-           <button
-            id="care-tab"
-            class="tab-button border-b-2 border-transparent text-gray-500 hover:text-gray-700 px-1 py-4 text-sm font-medium cursor-pointer"
-          >
-            Video sản phẩm
-          </button>
-          <!-- <button
-            id="shipping-tab"
-            class="tab-button border-b-2 border-transparent text-gray-500 hover:text-gray-700 px-1 py-4 text-sm font-medium"
-          >
-            Shipping & Returns
-          </button> -->
+        <nav>
+          <ul class="-mb-px flex space-x-8">
+            <li>
+              <button
+                id="details-tab"
+                role="tab"
+                aria-controls="details-tab"
+                aria-selected="false"
+                class="tab-button active border-b-2 border-pink-300 text-pink-300 px-1 py-4 text-sm font-medium"
+              >
+                Chi tiết sản phẩm
+              </button>
+            </li>
+            <li>
+              <button
+                id="video-tab"
+                role="tab"
+                aria-controls="video-tab"
+                aria-selected="false"
+                class="tab-button"
+              >
+                Video sản phẩm
+              </button>
+            </li>
+          </ul>
         </nav>
       </div>
 
@@ -233,84 +211,61 @@ const content = {
         id="details-content"
         class="tab-content active py-6"
       >
-        <ul class="pl-0 text-gray-700 space-y-2">
-            <li><strong>🔹 Mô tả tổng thể:</strong>
+        <div
+          class="hidden"
+          id="detail-tab-content"
+          role="tabpanel"
+          aria-labelledby="detail-tab-content"
+        >
+          <ul class="pl-0 text-gray-700 space-y-2">
+            <li>
+              <strong>🔹 Mô tả tổng thể:</strong>
+              <ul class="pl-8">
                 <li><strong>Thiết kế:</strong> Bộ đồ ngủ gồm áo ngắn tay và quần short dáng rộng.</li>
                 <li><strong>Màu sắc:</strong> Màu kem nhạt nhẹ nhàng, mang lại cảm giác thư thái.</li>
                 <li><strong>Họa tiết:</strong> In hình chú cún con màu hồng, chữ “Sweet” màu xanh baby và nơ hồng – tất cả tạo nên tổng thể rất ngọt ngào, đáng yêu.</li>
-            </li>
-          
-            <li><strong>🔹 Chi tiết thiết kế:</strong>
-              <ul class="pl-8">
-                    <li><strong>Cổ áo:</strong> Cổ tròn kiểu Peter Pan, bo nhẹ viền cổ, tăng độ nữ tính và dễ thương.</li>
-                    <li><strong>Tay áo:</strong> Tay ngắn, rộng rãi, mát mẻ khi mặc ngủ.</li>
-                    <li><strong>Nút cài:</strong> Cài nút phía trước, dễ mặc và tiện lợi.</li>
-                    <li><strong>Túi ngực:</strong> Có một túi nhỏ phía trước ngực trái, tăng tính năng động cho thiết kế.</li>
-                    <li><strong>Dáng quần:</strong> Short dáng rộng, ống hơi suông thoải mái.</li>
-                    <li><strong>Lưng thun:</strong> Co giãn linh hoạt, dễ chịu trong mọi tư thế nằm – ngồi – duỗi người.</li>
-                    <li><strong>Túi hai bên:</strong> Tiện lợi cho việc cất điện thoại hoặc các vật nhỏ.</li>
-                  
               </ul>
             </li>
           
-            <li><strong>🔹 Phong cách phù hợp:</strong>Cute, ngọt ngào, pha chút baby Hàn Quốc.
+            <li>
+              <strong>🔹 Chi tiết thiết kế:</strong>
+              <ul class="pl-8">
+                <li><strong>Cổ áo:</strong> Cổ tròn kiểu Peter Pan, bo nhẹ viền cổ, tăng độ nữ tính và dễ thương.</li>
+                <li><strong>Tay áo:</strong> Tay ngắn, rộng rãi, mát mẻ khi mặc ngủ.</li>
+                <li><strong>Nút cài:</strong> Cài nút phía trước, dễ mặc và tiện lợi.</li>
+                <li><strong>Túi ngực:</strong> Có một túi nhỏ phía trước ngực trái, tăng tính năng động cho thiết kế.</li>
+                <li><strong>Dáng quần:</strong> Short dáng rộng, ống hơi suông thoải mái.</li>
+                <li><strong>Lưng thun:</strong> Co giãn linh hoạt, dễ chịu trong mọi tư thế nằm – ngồi – duỗi người.</li>
+                <li><strong>Túi hai bên:</strong> Tiện lợi cho việc cất điện thoại hoặc các vật nhỏ.</li>
+              </ul>
             </li>
-            <li><strong>🔹 Size:</strong>
+          
+            <li>
+              <strong>🔹 Phong cách phù hợp:</strong>Cute, ngọt ngào, pha chút baby Hàn Quốc.
+            </li>
+            <li>
+              <strong>🔹 Size:</strong>
               <img
                 src={'size/' + '2.png'}
                 alt={'size'}
-                class="w-3/10 h-3/10object-cover shadow mt-4"
+                class="w-3/10 h-3/10 object-cover shadow mt-4"
               />
             </li>
           </ul>
+        </div> 
+        <div
+          class="hidden"
+          id="video-tab-content"
+          role="tabpanel"
+          aria-labelledby="video-tab-content"
+        >
           
-        </ul>
-      </div>
+        </div> <!-- #video-tab-content -->
+      </div> <!-- #details-content -->
+      
+      <hr class="my-10 h-0.5 border-t-0 bg-neutral-200 dark:bg-white/40" />
+    </div> <!-- container mx-auto px-4 sm:px-6 -->
 
-    <hr class="my-10 h-0.5 border-t-0 bg-neutral-200 dark:bg-white/40" />
-
-      <!-- <div
-        id="care-content"
-        class="tab-content hidden py-6"
-      >
-        <h3 class="text-lg font-semibold text-gray-800 mb-3">
-          Care Instructions
-        </h3>
-        <ul class="list-disc pl-5 text-gray-700 space-y-2">
-          <li>Machine wash cold with like colors</li>
-          <li>Use mild detergent</li>
-          <li>Tumble dry low or line dry for best results</li>
-          <li>Iron on low heat if needed</li>
-          <li>Do not bleach</li>
-          <li>For long-lasting softness, wash inside out</li>
-        </ul>
-      </div> -->
-
-      <!-- <div
-        id="shipping-content"
-        class="tab-content hidden py-6"
-      >
-        <h3 class="text-lg font-semibold text-gray-800 mb-3">
-          Shipping Information
-        </h3>
-        <ul class="list-disc pl-5 text-gray-700 space-y-2 mb-4">
-          <li>Processing time: 1-2 business days</li>
-          <li>Standard shipping: 3-5 business days</li>
-          <li>Express shipping available at checkout</li>
-          <li>Free shipping on orders over $50</li>
-          <li>International shipping available</li>
-        </ul>
-
-        <h3 class="text-lg font-semibold text-gray-800 mb-3">Returns Policy</h3>
-        <ul class="list-disc pl-5 text-gray-700 space-y-2">
-          <li>30-day return policy from delivery date</li>
-          <li>Items must be unworn, unwashed with tags attached</li>
-          <li>Original proof of purchase required</li>
-          <li>Return shipping costs are customer's responsibility</li>
-          <li>Refunds issued to original payment method</li>
-        </ul>
-      </div> -->
-    </div>
   </section>
 
   <!-- Reviews Section -->
@@ -502,80 +457,48 @@ const content = {
   <hr class="my-12 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" />
   <Footer />
 
-  <script is:inline>
-    // Mobile menu toggle
-    
-    document.addEventListener("DOMContentLoaded", function () {
-      const mobileMenuButton = document.getElementById("mobile-menu-button");
-      const mobileMenu = document.getElementById("mobile-menu");
+  <script>
+    import { Tabs } from 'flowbite';
+    import type { TabsOptions, TabsInterface, TabItem } from 'flowbite';
+    import type { InstanceOptions } from 'flowbite';
+    import '../scripts/menu.ts'
+    import { zoomImage, changeMainImage, selectColor, selectSize } from '../scripts/products.ts'
 
-      mobileMenuButton.addEventListener("click", function () {
-        mobileMenu.classList.toggle("active");
-      });
+    (window as any).zoomImage = zoomImage;
+    (window as any).changeMainImage = changeMainImage;
+    (window as any).selectColor = selectColor;
+    (window as any).selectSize = selectSize;
 
-      // Close mobile menu when clicking outside
-      document.addEventListener("click", function (event) {
-        if (
-          !mobileMenu.contains(event.target) &&
-          event.target !== mobileMenuButton
-        ) {
-          mobileMenu.classList.remove("active");
-        }
-      });
+    const tabsParent: HTMLElement = document.getElementById('tabs-example') as HTMLElement;
+    const tabElements: TabItem[] = [
+      {
+          id: 'detail',
+          triggerEl: document.querySelector('#details-tab') as HTMLElement,
+          targetEl: document.querySelector('#detail-tab-content') as HTMLElement,
+      },
+      {
+          id: 'video',
+          triggerEl: document.querySelector('#video-tab') as HTMLElement,
+          targetEl: document.querySelector('#video-tab-content')  as HTMLElement,
+      },
+    ];
 
-      // Tab functionality
-      const tabs = document.querySelectorAll(".tab-button");
-      const tabContents = document.querySelectorAll(".tab-content");
+    const options: TabsOptions = {
+      defaultTabId: 'settings',
+      activeClasses:
+          'd-block',
+      inactiveClasses:
+          'text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300',
+      onShow: () => {
+          console.log('tab is shown');
+      },
+    };
 
-      tabs.forEach((tab) => {
-        tab.addEventListener("click", function () {
-          // Remove active class from all tabs and contents
-          tabs.forEach((t) => t.classList.remove("active"));
-          tabContents.forEach((c) => c.classList.remove("active"));
+    const instanceOptions: InstanceOptions = {
+      id: 'tabs-example',
+      override: true
+    };
 
-          // Add active class to clicked tab
-          this.classList.add("active");
-
-          // Show corresponding content
-          const contentId = this.id.replace("-tab", "-content");
-          document.getElementById(contentId).classList.add("active");
-        });
-      });
-    });
-
-    // Product gallery functions
-    function changeMainImage(src, thumbnail) {
-      document.getElementById("main-image").src = src;
-
-    }
-
-    function zoomImage() {
-      const img = document.getElementById("main-image");
-      if (img.classList.contains("scale-150")) {
-        img.classList.remove("scale-150", "cursor-zoom-out");
-        img.classList.add("cursor-zoom-in");
-      } else {
-        img.classList.add("scale-150", "cursor-zoom-out");
-        img.classList.remove("cursor-zoom-in");
-      }
-    }
-
-    // Color selection
-    function selectColor(colorName, element, colorCode) {
-      document.getElementById("selected-color").textContent = colorName;
-
-      const swatches = document.querySelectorAll(".color-swatch");
-      swatches.forEach((s) => s.classList.remove("selected"));
-      element.classList.add("selected");
-
-      // You could update the main image based on color selection here
-    }
-
-    // Size selection
-    function selectSize(size, element) {
-      const sizes = document.querySelectorAll(".size-option");
-      sizes.forEach((s) => s.classList.remove("selected"));
-      element.classList.add("selected");
-    }
+    const tabs: TabsInterface = new Tabs(tabsParent, tabElements, options, instanceOptions);
   </script>
 </Layout>
