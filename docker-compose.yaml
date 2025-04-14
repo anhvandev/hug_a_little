@@ -33,8 +33,6 @@ services:
       - ./cms/uploads:/directus/uploads
       - ./cms/extensions:/directus/extensions
     depends_on:
-      mysql:
-        condition: service_healthy
       cache:
         condition: service_healthy
       database:
