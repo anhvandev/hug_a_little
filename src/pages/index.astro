@@ -1,9 +1,7 @@
 ---
 import directus from "../../lib/directus";
 import type { Page } from "../../lib/directus";
-import {
-  readItems,
-} from "@directus/sdk";
+import { readItems } from "@directus/sdk";
 
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
@@ -42,7 +40,8 @@ try {
           Sweet Dreams
         </h1>
         <p class="text-base sm:text-lg text-gray-700 mb-6">
-          Khám phá bộ sưu tập đồ ngủ cực kỳ mềm mại với thiết kế trẻ trung, hoàn hảo cho những đêm thư giãn.
+          Khám phá bộ sưu tập đồ ngủ cực kỳ mềm mại với thiết kế trẻ trung, hoàn
+          hảo cho những đêm thư giãn.
         </p>
         <a
           href="#product"
@@ -54,7 +53,10 @@ try {
   </section>
 
   <!-- Featured Products -->
-  <section id="product" class=" bg-white">
+  <section
+    id="product"
+    class="bg-white"
+  >
     <div class="container mx-auto px-4 sm:px-6 py-12 sm:py-16">
       <div class="text-center mb-8 sm:mb-12 mt-8">
         <h2
@@ -63,7 +65,8 @@ try {
           New Arrivals
         </h2>
         <p class="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">
-          Khám phá những sáng tạo ấm cúng mới nhất, được thiết kế để giúp đêm của bạn thoải mái hơn
+          Khám phá những sáng tạo ấm cúng mới nhất, được thiết kế để giúp đêm
+          của bạn thoải mái hơn
         </p>
       </div>
 
@@ -82,11 +85,11 @@ try {
           </div>
           <div class="p-4">
             <h3 class="text-lg font-semibold text-gray-800 mb-1">
-              Baby Tee Hồng
+              <a href="pink-babytee">Baby Tee Hồng</a>
             </h3>
             <p class="text-pink-300 font-medium mb-3">179.000 VND</p>
             <a
-              href="#"
+              href="pink-babytee"
               class="text-sm text-gray-600 hover:text-pink-300 transition touch-target"
               >Xem chi tiết</a
             >
@@ -160,7 +163,8 @@ try {
           Tai sao bạn chọn mua đồ tại Hug A Little
         </h2>
         <p class="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">
-          Chúng tớ cam kết mang đến cho bạn sự cân bằng hoàn hảo giữa sự thoải mái và dễ thương
+          Chúng tớ cam kết mang đến cho bạn sự cân bằng hoàn hảo giữa sự thoải
+          mái và dễ thương
         </p>
       </div>
 
@@ -176,7 +180,8 @@ try {
             Vật liệu siêu mềm
           </h3>
           <p class="text-gray-600 text-sm sm:text-base">
-            Tận hưởng chất vải mềm mại tuyệt vời mang đến cảm giác như được ôm nhẹ nhàng suốt đêm dài.
+            Tận hưởng chất vải mềm mại tuyệt vời mang đến cảm giác như được ôm
+            nhẹ nhàng suốt đêm dài.
           </p>
         </div>
 
@@ -191,7 +196,8 @@ try {
             Giá cả phải chăng
           </h3>
           <p class="text-gray-600 text-sm sm:text-base">
-            Sự thoải mái dễ chịu, thân thiện với ví tiền của bạn mà không ảnh hưởng đến chất lượng.
+            Sự thoải mái dễ chịu, thân thiện với ví tiền của bạn mà không ảnh
+            hưởng đến chất lượng.
           </p>
         </div>
 
@@ -206,7 +212,8 @@ try {
             Thiết kế theo chủ đề độc đáo
           </h3>
           <p class="text-gray-600 text-sm sm:text-base">
-            Những mẫu mã và bộ sưu tập độc quyền mà bạn sẽ yêu thích, được thiết kế bằng cả tình yêu.
+            Những mẫu mã và bộ sưu tập độc quyền mà bạn sẽ yêu thích, được thiết
+            kế bằng cả tình yêu.
           </p>
         </div>
       </div>
@@ -232,16 +239,19 @@ try {
             Được chế tạo để tạo sự thoải mái
           </h2>
           <p class="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base">
-            Bộ đồ ngủ của chúng tôi được làm từ hỗn hợp cotton cao cấp, thoáng khí, đảm bảo sự tiếp xúc nhẹ nhàng với làn da của bạn suốt đêm. Mỗi loại vải được lựa chọn cẩn thận vì độ mềm mại, độ bền và khả năng giữ nhiệt độ hoàn hảo.
+            Bộ đồ ngủ của chúng tôi được làm từ hỗn hợp cotton cao cấp, thoáng
+            khí, đảm bảo sự tiếp xúc nhẹ nhàng với làn da của bạn suốt đêm. Mỗi
+            loại vải được lựa chọn cẩn thận vì độ mềm mại, độ bền và khả năng
+            giữ nhiệt độ hoàn hảo.
           </p>
           <p class="text-gray-700 mb-6 text-sm sm:text-base">
-            Chúng tôi tin vào đồ ngủ đẹp được làm cẩn thận. Chất lượng và sự thoải mái là trọng tâm trong mọi thứ chúng tôi tạo ra.
+            Chúng tôi tin vào đồ ngủ đẹp được làm cẩn thận. Chất lượng và sự
+            thoải mái là trọng tâm trong mọi thứ chúng tôi tạo ra.
           </p>
         </div>
       </div>
     </div>
   </section>
-  
 
   <!-- Newsletter -->
   <section class="py-12 sm:py-16 bg-white">
@@ -252,7 +262,8 @@ try {
         Hãy luôn ấm áp và dễ thương nhé!
       </h2>
       <p class="text-gray-600 mb-6 sm:mb-8 text-sm sm:text-base">
-        Theo dõi chúng tớ trên các mạng xã hội để nhận thông tin cập nhật độc quyền, ưu đãi hấp dẫn và thông báo về hàng mới.
+        Theo dõi chúng tớ trên các mạng xã hội để nhận thông tin cập nhật độc
+        quyền, ưu đãi hấp dẫn và thông báo về hàng mới.
       </p>
       <div class="flex flex-col sm:flex-row justify-center max-w-md mx-auto">
         <input
@@ -279,7 +290,8 @@ try {
       <p
         class="text-gray-700 mb-6 sm:mb-8 max-w-2xl mx-auto text-sm sm:text-base"
       >
-        Hãy tìm cho mình bộ đồ ngủ hoàn hảo và trải nghiệm sự khác biệt của Hug A Litlle
+        Hãy tìm cho mình bộ đồ ngủ hoàn hảo và trải nghiệm sự khác biệt của Hug
+        A Litlle
       </p>
       <a
         href="#"

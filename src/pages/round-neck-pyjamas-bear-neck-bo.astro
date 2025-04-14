@@ -184,25 +184,31 @@ const content = {
   <section class="py-8 bg-white">
     <div class="container mx-auto px-4 sm:px-6">
       <div class="border-b border-gray-200">
-        <nav class="-mb-px flex space-x-8">
-          <button
-            id="details-tab"
-            class="tab-button active border-b-2 border-pink-300 text-pink-300 px-1 py-4 text-sm font-medium"
-          >
-            Chi tiết sản phẩm
-          </button>
-           <button
-            id="care-tab"
-            class="tab-button border-b-2 border-transparent text-gray-500 hover:text-gray-700 px-1 py-4 text-sm font-medium cursor-pointer"
-          >
-            Video sản phẩm
-          </button>
-          <!-- <button
-            id="shipping-tab"
-            class="tab-button border-b-2 border-transparent text-gray-500 hover:text-gray-700 px-1 py-4 text-sm font-medium"
-          >
-            Shipping & Returns
-          </button> -->
+        <nav>
+          <ul class="-mb-px flex space-x-8">
+            <li>
+              <button
+                id="details-tab"
+                role="tab"
+                aria-controls="details-tab"
+                aria-selected="false"
+                class="tab-button active border-b-2 border-pink-300 text-pink-300 px-1 py-4 text-sm font-medium"
+              >
+                Chi tiết sản phẩm
+              </button>
+            </li>
+            <li>
+              <button
+                id="video-tab"
+                role="tab"
+                aria-controls="video-tab"
+                aria-selected="false"
+                class="tab-button"
+              >
+                Video sản phẩm
+              </button>
+            </li>
+          </ul>
         </nav>
       </div>
 
@@ -210,15 +216,25 @@ const content = {
         id="details-content"
         class="tab-content active py-6"
       >
-        <ul class="pl-0 text-gray-700 space-y-2">
-            <li><strong>🔹 Mô tả tổng thể:</strong>
-                <li><strong>Thiết kế:</strong> Bộ đồ ngủ gồm áo ngắn tay và quần short dáng rộng.</li>
-                <li><strong>Màu sắc:</strong> Màu kem nhạt nhẹ nhàng, mang lại cảm giác thư thái.</li>
-                <li><strong>Họa tiết:</strong> In hình chú cún con màu hồng, chữ “Sweet” màu xanh baby và nơ hồng – tất cả tạo nên tổng thể rất ngọt ngào, đáng yêu.</li>
-            </li>
-          
-            <li><strong>🔹 Chi tiết thiết kế:</strong>
-              <ul class="pl-8">
+        <div
+          class="hidden"
+          id="detail-tab-content"
+          role="tabpanel"
+          aria-labelledby="detail-tab-content"
+        >
+          <ul class="pl-0 text-gray-700 space-y-2">
+              <li>
+                <strong>🔹 Mô tả tổng thể:</strong>
+                  <ul>
+                    <li><strong>Thiết kế:</strong> Bộ đồ ngủ gồm áo ngắn tay và quần short dáng rộng.</li>
+                    <li><strong>Màu sắc:</strong> Màu kem nhạt nhẹ nhàng, mang lại cảm giác thư thái.</li>
+                    <li><strong>Họa tiết:</strong> In hình chú cún con màu hồng, chữ “Sweet” màu xanh baby và nơ hồng – tất cả tạo nên tổng thể rất ngọt ngào, đáng yêu.</li>
+                  </ul>
+              </li>
+            
+              <li>
+                <strong>🔹 Chi tiết thiết kế:</strong>
+                <ul class="pl-8">
                     <li><strong>Cổ áo:</strong> Cổ tròn kiểu Peter Pan, bo nhẹ viền cổ, tăng độ nữ tính và dễ thương.</li>
                     <li><strong>Tay áo:</strong> Tay ngắn, rộng rãi, mát mẻ khi mặc ngủ.</li>
                     <li><strong>Nút cài:</strong> Cài nút phía trước, dễ mặc và tiện lợi.</li>
@@ -226,213 +242,37 @@ const content = {
                     <li><strong>Dáng quần:</strong> Short dáng rộng, ống hơi suông thoải mái.</li>
                     <li><strong>Lưng thun:</strong> Co giãn linh hoạt, dễ chịu trong mọi tư thế nằm – ngồi – duỗi người.</li>
                     <li><strong>Túi hai bên:</strong> Tiện lợi cho việc cất điện thoại hoặc các vật nhỏ.</li>
-                  
-              </ul>
-            </li>
-          
-            <li><strong>🔹 Phong cách phù hợp:</strong>Cute, ngọt ngào, pha chút baby Hàn Quốc.
-            </li>
-            <li><strong>🔹 Size:</strong>
-              <img
-                src={'size/' + '2.png'}
-                alt={'size'}
-                class="w-3/10 h-3/10object-cover shadow mt-4"
-              />
-            </li>
+                </ul>
+              </li>
+            
+              <li>
+                <strong>🔹 Phong cách phù hợp:</strong>Cute, ngọt ngào, pha chút baby Hàn Quốc.
+              </li>
+              <li>
+                <strong>🔹 Size:</strong>
+                <img
+                  src={'size/' + '2.png'}
+                  alt={'size'}
+                  class="w-3/10 h-3/10object-cover shadow mt-4"
+                />
+              </li>
+            </ul>
+            
           </ul>
-          
-        </ul>
+        </div>
+        <div
+            class="hidden"
+            id="video-tab-content"
+            role="tabpanel"
+            aria-labelledby="video-tab-content"
+          >
+            
+        </div> <!-- #video-tab-content -->
       </div>
-
-    <hr class="my-10 h-0.5 border-t-0 bg-neutral-200 dark:bg-white/40" />
-
-      <!-- <div
-        id="care-content"
-        class="tab-content hidden py-6"
-      >
-        <h3 class="text-lg font-semibold text-gray-800 mb-3">
-          Care Instructions
-        </h3>
-        <ul class="list-disc pl-5 text-gray-700 space-y-2">
-          <li>Machine wash cold with like colors</li>
-          <li>Use mild detergent</li>
-          <li>Tumble dry low or line dry for best results</li>
-          <li>Iron on low heat if needed</li>
-          <li>Do not bleach</li>
-          <li>For long-lasting softness, wash inside out</li>
-        </ul>
-      </div> -->
-
-      <!-- <div
-        id="shipping-content"
-        class="tab-content hidden py-6"
-      >
-        <h3 class="text-lg font-semibold text-gray-800 mb-3">
-          Shipping Information
-        </h3>
-        <ul class="list-disc pl-5 text-gray-700 space-y-2 mb-4">
-          <li>Processing time: 1-2 business days</li>
-          <li>Standard shipping: 3-5 business days</li>
-          <li>Express shipping available at checkout</li>
-          <li>Free shipping on orders over $50</li>
-          <li>International shipping available</li>
-        </ul>
-
-        <h3 class="text-lg font-semibold text-gray-800 mb-3">Returns Policy</h3>
-        <ul class="list-disc pl-5 text-gray-700 space-y-2">
-          <li>30-day return policy from delivery date</li>
-          <li>Items must be unworn, unwashed with tags attached</li>
-          <li>Original proof of purchase required</li>
-          <li>Return shipping costs are customer's responsibility</li>
-          <li>Refunds issued to original payment method</li>
-        </ul>
-      </div> -->
+      
+      <hr class="my-10 h-0.5 border-t-0 bg-neutral-200 dark:bg-white/40" />
     </div>
   </section>
-
-  <!-- Reviews Section -->
-  <!-- <section class="py-12 bg-pink-50">
-    <div class="container mx-auto px-4 sm:px-6">
-      <h2 class="text-2xl font-bold text-gray-800 mb-6 heading-font">
-        Customer Reviews
-      </h2> -->
-
-      <!-- <div class="bg-white rounded-lg shadow-sm p-6 mb-8"> -->
-        <!-- <div
-          class="flex flex-col md:flex-row md:items-center md:justify-between mb-6"
-        >
-          <div class="mb-4 md:mb-0">
-            <div class="flex items-center">
-              <div class="text-3xl font-bold mr-4">4.2</div>
-              <div>
-                <div class="flex mb-1">
-                  <i class="fas fa-star review-star filled"></i>
-                  <i class="fas fa-star review-star filled"></i>
-                  <i class="fas fa-star review-star filled"></i>
-                  <i class="fas fa-star review-star filled"></i>
-                  <i class="fas fa-star review-star"></i>
-                </div>
-                <div class="text-gray-600 text-sm">Based on 42 reviews</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="flex space-x-2">
-            <button
-              class="border border-gray-300 bg-white text-gray-700 px-4 py-2 rounded-full text-sm hover:bg-gray-50"
-            >
-              <i class="fas fa-filter mr-1"></i> Filter
-            </button>
-            <button
-              class="bg-pink-300 text-white px-4 py-2 rounded-full text-sm hover:bg-pink-400"
-            >
-              <i class="fas fa-pen mr-1"></i> Write a Review
-            </button>
-          </div>
-        </div> -->
-
-        <!-- <div class="flex overflow-x-auto pb-2 mb-6">
-          <button
-            class="review-topic flex-shrink-0 bg-pink-100 text-pink-300 px-4 py-2 rounded-full text-sm mr-2 hover:bg-pink-200"
-          >
-            Softness (32)
-          </button>
-          <button
-            class="review-topic flex-shrink-0 bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm mr-2 hover:bg-gray-200"
-          >
-            Fit (28)
-          </button>
-          <button
-            class="review-topic flex-shrink-0 bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm mr-2 hover:bg-gray-200"
-          >
-            Comfort (25)
-          </button>
-          <button
-            class="review-topic flex-shrink-0 bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm mr-2 hover:bg-gray-200"
-          >
-            Quality (18)
-          </button>
-          <button
-            class="review-topic flex-shrink-0 bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm mr-2 hover:bg-gray-200"
-          >
-            Cuteness (15)
-          </button>
-        </div> -->
-
-        <!-- Review 1 -->
-        <!-- <div class="border-b border-gray-200 pb-6 mb-6">
-          <div class="flex justify-between mb-2">
-            <div class="flex items-center">
-              <div class="flex mr-2">
-                <i class="fas fa-star review-star filled"></i>
-                <i class="fas fa-star review-star filled"></i>
-                <i class="fas fa-star review-star filled"></i>
-                <i class="fas fa-star review-star filled"></i>
-                <i class="fas fa-star review-star filled"></i>
-              </div>
-              <span class="font-medium text-gray-800">Sarah J.</span>
-            </div>
-            <span class="text-gray-500 text-sm">2 weeks ago</span>
-          </div>
-          <h3 class="font-medium text-gray-800 mb-2">
-            So soft and comfortable!
-          </h3>
-          <p class="text-gray-700 mb-3">
-            These pajamas are even softer than I imagined! The fabric is so cozy
-            and the fit is perfect. I got the size small and it fits just right
-            - not too tight, not too loose. The cloud pattern is adorable and
-            the colors are exactly as pictured.
-          </p>
-          <div class="flex items-center text-sm text-gray-500">
-            <button class="flex items-center mr-4 hover:text-pink-300">
-              <i class="far fa-thumbs-up mr-1"></i> Helpful (12)
-            </button>
-            <button class="flex items-center hover:text-pink-300">
-              <i class="far fa-thumbs-down mr-1"></i> Not Helpful (0)
-            </button>
-          </div>
-        </div> -->
-
-        <!-- Review 2 -->
-        <!-- <div class="border-b border-gray-200 pb-6 mb-6">
-          <div class="flex justify-between mb-2">
-            <div class="flex items-center">
-              <div class="flex mr-2">
-                <i class="fas fa-star review-star filled"></i>
-                <i class="fas fa-star review-star filled"></i>
-                <i class="fas fa-star review-star filled"></i>
-                <i class="fas fa-star review-star filled"></i>
-                <i class="fas fa-star review-star"></i>
-              </div>
-              <span class="font-medium text-gray-800">Emily R.</span>
-            </div>
-            <span class="text-gray-500 text-sm">1 month ago</span>
-          </div>
-          <h3 class="font-medium text-gray-800 mb-2">Love them!</h3>
-          <p class="text-gray-700 mb-3">
-            These pajamas are so cute and comfortable. The material is soft and
-            breathable, perfect for sleeping. I ordered my usual size medium and
-            they fit great. The only reason I didn't give 5 stars is because the
-            color was slightly lighter than I expected, but still very pretty.
-          </p>
-          <div class="flex items-center text-sm text-gray-500">
-            <button class="flex items-center mr-4 hover:text-pink-300">
-              <i class="far fa-thumbs-up mr-1"></i> Helpful (8)
-            </button>
-            <button class="flex items-center hover:text-pink-300">
-              <i class="far fa-thumbs-down mr-1"></i> Not Helpful (1)
-            </button>
-          </div>
-        </div> -->
-
-        <!-- <button
-          class="w-full border border-pink-300 text-pink-300 hover:bg-pink-50 px-6 py-3 rounded-full font-medium transition duration-300"
-        >
-          Load More Reviews
-        </button> -->
-      <!-- </div> -->
-    <!-- </div> -->
-  <!-- </section> -->
 
   <!-- Related Products -->
   <section class="py-12 bg-white">
@@ -482,80 +322,48 @@ const content = {
   <hr class="my-12 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" />
   <Footer />
 
-  <script is:inline>
-    // Mobile menu toggle
-    
-    document.addEventListener("DOMContentLoaded", function () {
-      const mobileMenuButton = document.getElementById("mobile-menu-button");
-      const mobileMenu = document.getElementById("mobile-menu");
+  <script>
+    import { Tabs } from 'flowbite';
+    import type { TabsOptions, TabsInterface, TabItem } from 'flowbite';
+    import type { InstanceOptions } from 'flowbite';
+    import '../scripts/menu.ts'
+    import { zoomImage, changeMainImage, selectColor, selectSize } from '../scripts/products.ts'
 
-      mobileMenuButton.addEventListener("click", function () {
-        mobileMenu.classList.toggle("active");
-      });
+    (window as any).zoomImage = zoomImage;
+    (window as any).changeMainImage = changeMainImage;
+    (window as any).selectColor = selectColor;
+    (window as any).selectSize = selectSize;
 
-      // Close mobile menu when clicking outside
-      document.addEventListener("click", function (event) {
-        if (
-          !mobileMenu.contains(event.target) &&
-          event.target !== mobileMenuButton
-        ) {
-          mobileMenu.classList.remove("active");
-        }
-      });
+    const tabsParent: HTMLElement = document.getElementById('tabs-example') as HTMLElement;
+    const tabElements: TabItem[] = [
+      {
+          id: 'detail',
+          triggerEl: document.querySelector('#details-tab') as HTMLElement,
+          targetEl: document.querySelector('#detail-tab-content') as HTMLElement,
+      },
+      {
+          id: 'video',
+          triggerEl: document.querySelector('#video-tab') as HTMLElement,
+          targetEl: document.querySelector('#video-tab-content')  as HTMLElement,
+      },
+    ];
 
-      // Tab functionality
-      const tabs = document.querySelectorAll(".tab-button");
-      const tabContents = document.querySelectorAll(".tab-content");
+    const options: TabsOptions = {
+      defaultTabId: 'settings',
+      activeClasses:
+          'd-block',
+      inactiveClasses:
+          'text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300',
+      onShow: () => {
+          console.log('tab is shown');
+      },
+    };
 
-      tabs.forEach((tab) => {
-        tab.addEventListener("click", function () {
-          // Remove active class from all tabs and contents
-          tabs.forEach((t) => t.classList.remove("active"));
-          tabContents.forEach((c) => c.classList.remove("active"));
+    const instanceOptions: InstanceOptions = {
+      id: 'tabs-example',
+      override: true
+    };
 
-          // Add active class to clicked tab
-          this.classList.add("active");
-
-          // Show corresponding content
-          const contentId = this.id.replace("-tab", "-content");
-          document.getElementById(contentId).classList.add("active");
-        });
-      });
-    });
-
-    // Product gallery functions
-    function changeMainImage(src, thumbnail) {
-      document.getElementById("main-image").src = src;
-
-    }
-
-    function zoomImage() {
-      const img = document.getElementById("main-image");
-      if (img.classList.contains("scale-150")) {
-        img.classList.remove("scale-150", "cursor-zoom-out");
-        img.classList.add("cursor-zoom-in");
-      } else {
-        img.classList.add("scale-150", "cursor-zoom-out");
-        img.classList.remove("cursor-zoom-in");
-      }
-    }
-
-    // Color selection
-    function selectColor(colorName, element, colorCode) {
-      document.getElementById("selected-color").textContent = colorName;
-
-      const swatches = document.querySelectorAll(".color-swatch");
-      swatches.forEach((s) => s.classList.remove("selected"));
-      element.classList.add("selected");
-
-      // You could update the main image based on color selection here
-    }
-
-    // Size selection
-    function selectSize(size, element) {
-      const sizes = document.querySelectorAll(".size-option");
-      sizes.forEach((s) => s.classList.remove("selected"));
-      element.classList.add("selected");
-    }
+    const tabs: TabsInterface = new Tabs(tabsParent, tabElements, options, instanceOptions);
   </script>
 </Layout>
