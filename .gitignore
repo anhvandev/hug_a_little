@@ -1,5 +1,7 @@
 # build output
 dist/
+# exclude all dist folders inside cms directory and its subdirectories
+cms/
 
 # generated types
 .astro/
@@ -24,4 +26,3 @@ pnpm-debug.log*
 .idea/
 .env_docker
 uploads/
-data/

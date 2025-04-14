@@ -2,11 +2,11 @@ services:
   database:
     image: postgis/postgis:13-master
     volumes:
-      - ./data/database:/var/lib/postgresql/data
+      - postgis_volume:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: "directus"
-      POSTGRES_PASSWORD: "directus"
-      POSTGRES_DB: "directus"
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
     healthcheck:
       test: ["CMD", "pg_isready", "--host=localhost", "--username=directus"]
       interval: 10s
@@ -30,22 +30,23 @@ services:
     ports:
       - 8055:8055
     volumes:
-      - ./uploads:/directus/uploads
-      - ./extensions:/directus/extensions
+      - ./cms/uploads:/directus/uploads
+      - ./cms/extensions:/directus/extensions
     depends_on:
-      database:
-        condition: service_healthy
       cache:
+        condition: service_healthy
+      database:
         condition: service_healthy
     environment:
       SECRET: ${SECRET}
 
-      DB_CLIENT: "pg"
-      DB_HOST: "database"
-      DB_PORT: "5432"
-      DB_DATABASE: "directus"
-      DB_USER: "directus"
-      DB_PASSWORD: "directus"
+      # Database config
+      DB_CLIENT: ${DB_CLIENT}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
 
       CACHE_ENABLED: "true"
       CACHE_AUTO_PURGE: "true"
@@ -56,3 +57,16 @@ services:
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
 
       PUBLIC_URL: ${PUBLIC_URL}
+
+      STORAGE_LOCATIONS: ${STORAGE_LOCATIONS}
+      STORAGE_DRIVER: ${STORAGE_DRIVER}
+      STORAGE_S3_DRIVER: ${STORAGE_S3_DRIVER}
+      STORAGE_S3_KEY: ${STORAGE_S3_KEY}
+      STORAGE_S3_SECRET: ${STORAGE_S3_SECRET}
+      STORAGE_S3_BUCKET: ${STORAGE_S3_BUCKET}
+      STORAGE_S3_REGION: ${STORAGE_S3_REGION}
+      STORAGE_S3_ENDPOINT: ${STORAGE_S3_ENDPOINT}
+      STORAGE_S3_FORCE_PATH_STYLE: ${STORAGE_S3_FORCE_PATH_STYLE}
+
+volumes:
+  postgis_volume:
