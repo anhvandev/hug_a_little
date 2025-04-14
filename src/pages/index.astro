@@ -78,16 +78,22 @@ try {
           class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300"
         >
           <div class="responsive-img-container">
-            <img
-              src="website_image/4.png"
-              alt="Baby Tee Pink"
-            />
+            <a
+              href="pink-babytee"
+              class="block"
+            >
+              <img
+                class="lazy block w-full lg:h-[600px] h-[500px]"
+                data-src="website_image/4.png"
+                alt="Baby Tee Pink"
+              />
+            </a>
           </div>
           <div class="p-4">
             <h3 class="text-lg font-semibold text-gray-800 mb-1">
               <a href="pink-babytee">Baby Tee Hồng</a>
             </h3>
-            <p class="text-pink-300 font-medium mb-3">199.000 VND</p>
+            <p class="text-pink-300 font-medium mb-3">179.000 VND</p>
             <a
               href="pink-babytee"
               class="text-sm text-gray-600 hover:text-pink-300 transition touch-target"
@@ -101,18 +107,24 @@ try {
           class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300"
         >
           <div class="responsive-img-container">
-            <img
-              src="website_image/27.png"
-              alt="Pjyama cổ tròn"
-            />
+            <a
+              href="round-pyjamas-bear-neck-bo"
+              class="block"
+            >
+              <img
+                class="lazy block w-full lg:h-[600px] h-[500px]"
+                data-src="website_image/27.png"
+                alt="Pjyama cổ tròn"
+              />
+            </a>
           </div>
           <div class="p-4">
             <h3 class="text-lg font-semibold text-gray-800 mb-1">
-              Pjyama cổ tròn
+              <a href="round-pyjamas-bear-neck-bo">Pjyama cổ tròn</a>
             </h3>
             <p class="text-pink-300 font-medium mb-3">289.000 VND</p>
             <a
-              href="#"
+              href="round-pyjamas-bear-neck-bo"
               class="text-sm text-gray-600 hover:text-pink-300 transition touch-target"
               >Xem chi tiết</a
             >
@@ -124,18 +136,24 @@ try {
           class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300"
         >
           <div class="responsive-img-container">
-            <img
-              src="website_image/32.png"
-              alt="Pjyama cổ tròn nơ"
-            />
+            <a
+              href="round-pyjamas-bear-teddy"
+              class="block"
+            >
+              <img
+                class="lazy block w-full lg:h-[600px] h-[500px]"
+                data-src="website_image/32.png"
+                alt="Pjyama cổ tròn nơ"
+              />
+            </a>
           </div>
           <div class="p-4">
             <h3 class="text-lg font-semibold text-gray-800 mb-1">
-              Pjyama cổ tròn nơ
+              <a href="round-pyjamas-bear-teddy">Pjyama cổ tròn nơ </a>
             </h3>
             <p class="text-pink-300 font-medium mb-3">299.000 VND</p>
             <a
-              href="#"
+              href="round-pyjamas-bear-teddy"
               class="text-sm text-gray-600 hover:text-pink-300 transition touch-target"
               >Xem chi tiết</a
             >
@@ -227,7 +245,8 @@ try {
         <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
           <div class="responsive-img-container">
             <img
-              src="website_image/material.jpg"
+              class="lazy"
+              data-src="website_image/material.jpg"
               alt="Premium Materials"
             />
           </div>
@@ -304,25 +323,9 @@ try {
   <Footer />
 
   <script>
-    // Mobile menu toggle
+    import "../scripts/menu.ts";
+    import "../scripts/lazyload.ts";
     document.addEventListener("DOMContentLoaded", function () {
-      const mobileMenuButton = document.getElementById("mobile-menu-button");
-      const mobileMenu = document.getElementById("mobile-menu");
-
-      mobileMenuButton.addEventListener("click", function () {
-        mobileMenu.classList.toggle("active");
-      });
-
-      // Close mobile menu when clicking outside
-      document.addEventListener("click", function (event) {
-        if (
-          !mobileMenu.contains(event.target) &&
-          event.target !== mobileMenuButton
-        ) {
-          mobileMenu.classList.remove("active");
-        }
-      });
-
       // Smooth scroll for anchor links
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
@@ -334,30 +337,6 @@ try {
           }
         });
       });
-
-      // Optimize image loading
-      if ("loading" in HTMLImageElement.prototype) {
-        // Native lazy loading is supported
-        const images = document.querySelectorAll('img[loading="lazy"]');
-        images.forEach((img) => {
-          img.src = img.dataset.src;
-        });
-      } else {
-        // Fallback for browsers without native lazy loading
-        const lazyLoadObserver = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const img = entry.target;
-              img.src = img.dataset.src;
-              lazyLoadObserver.unobserve(img);
-            }
-          });
-        });
-
-        document.querySelectorAll('img[loading="lazy"]').forEach((img) => {
-          lazyLoadObserver.observe(img);
-        });
-      }
     });
   </script>
 </Layout>

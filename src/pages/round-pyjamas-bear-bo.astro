@@ -1,12 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Navigation from "../components/Navigation.astro";
-import Footer from '../components/Footer.astro';
+import Footer from "../components/Footer.astro";
 import "../styles/product.scss";
-import { variationIndex } from '../store/product';
+import { variationIndex } from "../store/product";
 import Purchase from "../components/Purchase.astro";
 
-const pathImage = 'website_image/';
+const pathImage = "website_image/";
 
 const relatedProduct = [{
   name: 'Pyjamas Ngắn Gấu Nâu Có Dây',
@@ -43,14 +43,13 @@ const content = {
   rawPrice: '400',
   discount: '12%',
   description: [
-    '° Chất liệu: Vải cotton thô tự nhiên, mỏng nhẹ, thoáng khí, thấm hút mồ hôi tốt mềm mại và thoáng mát, mang lại cảm giác dễ chịu khi mặc.',
-    '° Thiết kế thời trang: Set ngủ Basic đơn giản, có hoạ tiết gấu và nơ dễ thương, thoả mái khi mặc.',
-    '° Phong cách đơn giản và trẻ trung, phù hợp cho mùa hè, có thể đi chơi ra ngoài ˙ᵕ˙',
-    '° Set gồm: Bộ đồ ngủ gồm áo ngắn tay và quần short dáng rộng.',
-    '° Màu sắc: Màu kem nhạt chủ đạo, mang lại cảm giác dịu mắt, thư giãn',
-  ]
-}
-
+    "° Chất liệu: Vải cotton thô tự nhiên, mỏng nhẹ, thoáng khí, thấm hút mồ hôi tốt mềm mại và thoáng mát, mang lại cảm giác dễ chịu khi mặc.",
+    "° Thiết kế thời trang: Set ngủ Basic đơn giản, có hoạ tiết gấu và nơ dễ thương, thoả mái khi mặc.",
+    "° Phong cách đơn giản và trẻ trung, phù hợp cho mùa hè, có thể đi chơi ra ngoài ˙ᵕ˙",
+    "° Set gồm: Bộ đồ ngủ gồm áo ngắn tay và quần short dáng rộng.",
+    "° Màu sắc: Màu kem nhạt chủ đạo, mang lại cảm giác dịu mắt, thư giãn",
+  ],
+};
 ---
 
 <Layout>
@@ -82,29 +81,51 @@ const content = {
       <div class="flex flex-col lg:flex-row gap-8">
         <!-- Product Gallery -->
         <div class="lg:w-1/3 product-gallery">
-          <div class="bg-white rounded-lg overflow-hidden shadow-sm mb-4">
-            <img
-              id="main-image"
-              src={pathImage + listVariations[`${variationIndex.get()}`].imgs[0]}
-              alt={listVariations[`${variationIndex.get()}`].name}
-              class="w-100px h-400px cursor-zoom-in"
-              onclick="zoomImage()"
-            />
+          <!-- Slider main container -->
+          <div class="swiper main-swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              {
+                listVariations[`${variationIndex.get()}`].imgs.map((image) => (
+                  <div class="swiper-slide">
+                    <div class="bg-white rounded-lg overflow-hidden shadow-sm mb-4 w-full h-[500px] lg:h-[645px]">
+                      <a
+                        data-fslightbox
+                        href={pathImage + image}
+                        class="lazy w-full h-full block"
+                      >
+                        <img
+                          data-src={pathImage + image}
+                          alt="Baby Tee Hồng"
+                          class="lazy w-full h-full block object-cover"
+                        />
+                      </a>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
           </div>
 
-          <div class="flex overflow-x-auto thumbnail-container space-x-2 pb-2">
-            {listVariations[`${variationIndex.get()}`].imgs.map((image) => (
-              <div
-                class="thumbnail bg-white rounded-md overflow-hidden cursor-pointer"
-                onclick=`changeMainImage("${pathImage + image}", this)`>
-                  <img
-                    src={pathImage + image}
-                    alt={listVariations[`${variationIndex.get()}`].name}
-                    class="w-full h-full object-cover"
-                  />
-              </div>
-            ))}
-            
+          <div class="swiper thumb-swiper">
+            <div class="swiper-wrapper">
+              {
+                listVariations[`${variationIndex.get()}`].imgs.map((image) => (
+                  <div class="swiper-slide thumbnail bg-white rounded-md overflow-hidden cursor-pointer w-full h-[151px]">
+                    <img
+                      data-src={pathImage + image}
+                      alt="Baby Tee Hồng"
+                      class="lazy w-full h-full block object-cover"
+                    />
+                  </div>
+                ))
+              }
+            </div>
           </div>
         </div>
 
@@ -137,14 +158,14 @@ const content = {
               >{100 - Math.round((Number(content.price) / Number(content.rawPrice) * 100))}% OFF</span
             >
           </div>
-          <p class="text-gray-700 font-bold mb-2">
-            ✿ Chi Tiết Sản Phẩm: 
-          </p>
+          <p class="text-gray-700 font-bold mb-2">✿ Chi Tiết Sản Phẩm:</p>
 
-          <p class=" mb-4">
-            {content.description.map((dataDescription) => (
-              <p class="text-gray-500  ml-2">{dataDescription}</p>
-            ))}
+          <p class="mb-4">
+            {
+              content.description.map((dataDescription) => (
+                <p class="text-gray-500  ml-2">{dataDescription}</p>
+              ))
+            }
           </p>
 
           <!-- <div class="mb-6 mt-6">
@@ -173,7 +194,9 @@ const content = {
               <span class="text-gray-700 text-sm"
                 ><i class="fas fa-undo text-pink-300 mr-2"></i>Đổi trả</span
               >
-              <span class="text-gray-700 text-sm">30 ngày từ khi mua sản phẩm</span>
+              <span class="text-gray-700 text-sm"
+                >30 ngày từ khi mua sản phẩm</span
+              >
             </div>
           </div>
         </div>
@@ -218,42 +241,72 @@ const content = {
         class="tab-content active py-6"
       >
         <div
-            class="hidden"
-            id="detail-tab-content"
-            role="tabpanel"
-            aria-labelledby="detail-tab-content"
-          >
+          class="hidden"
+          id="detail-tab-content"
+          role="tabpanel"
+          aria-labelledby="detail-tab-content"
+        >
           <ul class="pl-0 text-gray-700 space-y-2">
             <li>
               <strong>🔹 Mô tả tổng thể:</strong>
               <ul>
-                <li><strong>Thiết kế:</strong> Bộ đồ ngủ gồm áo ngắn tay và quần short dáng rộng.</li>
-                <li><strong>Màu sắc:</strong> Màu kem nhạt nhẹ nhàng, mang lại cảm giác thư thái.</li>
-                <li><strong>Họa tiết:</strong> In hình chú cún con màu hồng, chữ “Sweet” màu xanh baby và nơ hồng – tất cả tạo nên tổng thể rất ngọt ngào, đáng yêu.</li>
+                <li>
+                  <strong>Thiết kế:</strong> Bộ đồ ngủ gồm áo ngắn tay và quần short
+                  dáng rộng.
+                </li>
+                <li>
+                  <strong>Màu sắc:</strong> Màu kem nhạt nhẹ nhàng, mang lại cảm
+                  giác thư thái.
+                </li>
+                <li>
+                  <strong>Họa tiết:</strong> In hình chú cún con màu hồng, chữ “Sweet”
+                  màu xanh baby và nơ hồng – tất cả tạo nên tổng thể rất ngọt ngào,
+                  đáng yêu.
+                </li>
               </ul>
             </li>
-          
+
             <li>
               <strong>🔹 Chi tiết thiết kế:</strong>
               <ul class="pl-8">
-                <li><strong>Cổ áo:</strong> Cổ tròn kiểu Peter Pan, bo nhẹ viền cổ, tăng độ nữ tính và dễ thương.</li>
-                <li><strong>Tay áo:</strong> Tay ngắn, rộng rãi, mát mẻ khi mặc ngủ.</li>
-                <li><strong>Nút cài:</strong> Cài nút phía trước, dễ mặc và tiện lợi.</li>
-                <li><strong>Túi ngực:</strong> Có một túi nhỏ phía trước ngực trái, tăng tính năng động cho thiết kế.</li>
-                <li><strong>Dáng quần:</strong> Short dáng rộng, ống hơi suông thoải mái.</li>
-                <li><strong>Lưng thun:</strong> Co giãn linh hoạt, dễ chịu trong mọi tư thế nằm – ngồi – duỗi người.</li>
-                <li><strong>Túi hai bên:</strong> Tiện lợi cho việc cất điện thoại hoặc các vật nhỏ.</li>
+                <li>
+                  <strong>Cổ áo:</strong> Cổ tròn kiểu Peter Pan, bo nhẹ viền cổ,
+                  tăng độ nữ tính và dễ thương.
+                </li>
+                <li>
+                  <strong>Tay áo:</strong> Tay ngắn, rộng rãi, mát mẻ khi mặc ngủ.
+                </li>
+                <li>
+                  <strong>Nút cài:</strong> Cài nút phía trước, dễ mặc và tiện lợi.
+                </li>
+                <li>
+                  <strong>Túi ngực:</strong> Có một túi nhỏ phía trước ngực trái,
+                  tăng tính năng động cho thiết kế.
+                </li>
+                <li>
+                  <strong>Dáng quần:</strong> Short dáng rộng, ống hơi suông thoải
+                  mái.
+                </li>
+                <li>
+                  <strong>Lưng thun:</strong> Co giãn linh hoạt, dễ chịu trong mọi
+                  tư thế nằm – ngồi – duỗi người.
+                </li>
+                <li>
+                  <strong>Túi hai bên:</strong> Tiện lợi cho việc cất điện thoại
+                  hoặc các vật nhỏ.
+                </li>
               </ul>
             </li>
-          
+
             <li>
-              <strong>🔹 Phong cách phù hợp:</strong>Cute, ngọt ngào, pha chút baby Hàn Quốc.
+              <strong>🔹 Phong cách phù hợp:</strong>Cute, ngọt ngào, pha chút
+              baby Hàn Quốc.
             </li>
             <li>
               <strong>🔹 Size:</strong>
               <img
-                src={'size/' + '1.png'}
-                alt={'size'}
+                src={"size/" + "1.png"}
+                alt={"size"}
                 class="w-3/10 h-3/10object-cover shadow mt-4"
               />
             </li>
@@ -268,12 +321,14 @@ const content = {
           <video
             class="lg:max-h-[500px]"
             src="video/copy_88065A6E-9C0A-43A2-AC7E-ECC9C0436516.mp4"
-            controls>
+            controls
+          >
           </video>
-        </div> <!-- #video-tab-content -->
+        </div>
+        <!-- #video-tab-content -->
       </div>
 
-    <hr class="my-10 h-0.5 border-t-0 bg-neutral-200 dark:bg-white/40" />
+      <hr class="my-10 h-0.5 border-t-0 bg-neutral-200 dark:bg-white/40" />
     </div>
   </section>
 
@@ -292,7 +347,8 @@ const content = {
       </div>
 
       <div class={`grid grid-cols-5 md:grid-cols-5 gap-4 sm:gap-6`}>
-        {relatedProduct.map((otherProduct) => (
+        {
+          relatedProduct.map((otherProduct) => (
             <a
               href={otherProduct.link}
               target="_blank"
@@ -304,10 +360,8 @@ const content = {
                   alt={otherProduct.name}
                   class="absolute top-0 left-0 w-full h-full object-cover"
                 />
-                <button
-                  class="absolute top-2 right-2 bg-white rounded-full w-8 h-8 flex items-center justify-center shadow-sm hover:bg-pink-100"
-                >
-                  <i class="far fa-heart text-gray-600"></i>
+                <button class="absolute top-2 right-2 bg-white rounded-full w-8 h-8 flex items-center justify-center shadow-sm hover:bg-pink-100">
+                  <i class="far fa-heart text-gray-600" />
                 </button>
               </div>
               <div class="p-4">
@@ -316,55 +370,86 @@ const content = {
                 </h3>
                 <p class="text-pink-300 font-medium">{otherProduct.price}</p>
               </div>
-        </a>
-        ))}
+            </a>
+          ))
+        }
       </div>
     </div>
   </section>
   <hr class="my-12 h-0.5 border-t-0 bg-neutral-100 dark:bg-white/10" />
   <Footer />
   <script>
-    import { Tabs } from 'flowbite';
-    import type { TabsOptions, TabsInterface, TabItem } from 'flowbite';
-    import type { InstanceOptions } from 'flowbite';
-    import '../scripts/menu.ts'
-    import { zoomImage, changeMainImage, selectColor, selectSize } from '../scripts/products.ts'
+    import { Tabs } from "flowbite";
+    import type { TabsOptions, TabsInterface, TabItem } from "flowbite";
+    import type { InstanceOptions } from "flowbite";
+    import "../scripts/menu.ts";
+    import "../scripts/lazyload.ts";
 
-    (window as any).zoomImage = zoomImage;
-    (window as any).changeMainImage = changeMainImage;
-    (window as any).selectColor = selectColor;
-    (window as any).selectSize = selectSize;
-
-    const tabsParent: HTMLElement = document.getElementById('tabs-example') as HTMLElement;
+    const tabsParent: HTMLElement = document.getElementById(
+      "tabs-example"
+    ) as HTMLElement;
     const tabElements: TabItem[] = [
       {
-          id: 'detail',
-          triggerEl: document.querySelector('#details-tab') as HTMLElement,
-          targetEl: document.querySelector('#detail-tab-content') as HTMLElement,
+        id: "detail",
+        triggerEl: document.querySelector("#details-tab") as HTMLElement,
+        targetEl: document.querySelector("#detail-tab-content") as HTMLElement,
       },
       {
-          id: 'video',
-          triggerEl: document.querySelector('#video-tab') as HTMLElement,
-          targetEl: document.querySelector('#video-tab-content')  as HTMLElement,
+        id: "video",
+        triggerEl: document.querySelector("#video-tab") as HTMLElement,
+        targetEl: document.querySelector("#video-tab-content") as HTMLElement,
       },
     ];
 
     const options: TabsOptions = {
-      defaultTabId: 'settings',
-      activeClasses:
-          'd-block',
+      defaultTabId: "settings",
+      activeClasses: "d-block",
       inactiveClasses:
-          'text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300',
+        "text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300",
       onShow: () => {
-          console.log('tab is shown');
+        console.log("tab is shown");
       },
     };
 
     const instanceOptions: InstanceOptions = {
-      id: 'tabs-example',
-      override: true
+      id: "tabs-example",
+      override: true,
     };
 
-    const tabs: TabsInterface = new Tabs(tabsParent, tabElements, options, instanceOptions);
+    const tabs: TabsInterface = new Tabs(
+      tabsParent,
+      tabElements,
+      options,
+      instanceOptions
+    );
+
+    // core version + navigation, pagination modules:
+    import Swiper from "swiper";
+    import { Navigation, Thumbs } from "swiper/modules";
+    // import Swiper and modules styles
+    import "swiper/css";
+    import "swiper/css/navigation";
+    import "swiper/css/thumbs";
+
+    const thumbswiper = new Swiper(".thumb-swiper", {
+      spaceBetween: 10,
+      slidesPerView: 4,
+      freeMode: true,
+      watchSlidesProgress: true,
+    });
+    const swiper = new Swiper(".main-swiper", {
+      // configure Swiper to use modules
+      modules: [Navigation, Thumbs],
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      thumbs: {
+        swiper: thumbswiper,
+      },
+    });
+
+    // @ts-ignore
+    import "fslightbox";
   </script>
 </Layout>

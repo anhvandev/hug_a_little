@@ -42,3 +42,10 @@
 .tab-button.active {
     @apply border-b-2 border-pink-300 text-pink-300 px-1 py-4 text-sm font-medium;
 }
+
+.swiper-button-next,
+.swiper-button-prev {
+    &::after {
+        color: #f9a8d4;
+    }
+}
