@@ -4,25 +4,26 @@ import Navigation from "../components/Navigation.astro";
 import Footer from '../components/Footer.astro';
 import "../styles/product.scss";
 import { variationIndex } from '../store/product';
+import Purchase from "../components/Purchase.astro";
 
 const pathImage = 'website_image/';
 
 const relatedProduct = [{
-  name: 'Pyjamas Cổ Tròn',
+  name: 'Pyjamas Ngắn Gấu Nhỏ Vườn Hoa Có Nơ',
   price: '259.000',
-  img: '15.png',
-  link: '',
+  img: '30.png',
+  link: 'round-neck-pyjamas-bear-neck-teddy',
 }, {
-  name: 'Pyjamas Cổ Tròn Nơ',
+  name: 'Pyjamas Ngắn Gấu Tím Dịu Dàng',
   price: '279.000',
-  img: '18.png',
-  link: ''
+  img: '25.png',
+  link: 'round-neck-pyjamas-bear-paninton'
 },
 {
-  name: 'Bộ Pyjamas',
+  name: 'Pyjamas Ngắn Cún Hồng Ngọt Ngào',
   price: '279.000',
-  img: '21.png',
-  link: ''
+  img: '23.png',
+  link: 'round-neck-pyjamas-bear-bo'
 }];
 
 const listVariations = [
@@ -32,16 +33,16 @@ const listVariations = [
     '11.png',
     '12.png',
     ],
-    name: 'Pyjamas Ngắn Gấu Bo'
+    name: 'Pyjamas Ngắn Gấu Nhỏ Vườn Hoa'
   }
 ]
 const content = {
-  name: 'Pyjamas Ngắn Gấu Bo',
+  name: 'Pyjamas Ngắn Gấu Nhỏ Vườn Hoa',
   price: '179.000',
   rawPrice: '320.000',
   discount: '12%',
   description: [
-    '° Chất liệu: Đồ ngủ gấu chất vải cotton mềm mại và thoáng mát, mang lại cảm giác dễ chịu khi mặc.',
+    '° Chất liệu: Vải cotton thô tự nhiên, mỏng nhẹ, thoáng khí, thấm hút mồ hôi tốt mềm mại và thoáng mát, mang lại cảm giác dễ chịu khi mặc.',
     '° Thiết kế thời trang: Set ngủ Basic đơn giản, có hoạ tiết gấu và nơ dễ thương, thoả mái khi mặc.',
     '° Phong cách đơn giản và trẻ trung, phù hợp cho mùa hè, có thể đi chơi ra ngoài ˙ᵕ˙',
     '° Set gồm: Bộ đồ ngủ gồm áo ngắn tay và quần short dáng rộng.',
@@ -159,22 +160,7 @@ const content = {
             </div>
           </div> -->
 
-          <div class="mb-8 mt-8">
-            <h3 class="text-sm font-semibold text-gray-800 mb-2">SIZE: Free Size</h3>
-            <a
-              href="#"
-              class="text-pink-300 text-sm mt-2 inline-block hover:underline"
-              >View Size Chart</a
-            >
-          </div>
-
-          <div class="flex flex-col sm:flex-row gap-3 mb-6 w-1/2">
-            <button
-              class="bg-pink-300 hover:bg-pink-400 text-white px-6 py-3 rounded-full font-medium transition duration-300 flex-1 text-center touch-target"
-            >
-              <i class="fas fa-shopping-cart mr-2"></i> Mua ngay
-            </button>
-          </div>
+          <Purchase />
 
           <div class="border-t border-b border-gray-200 py-4">
             <div class="flex items-center justify-between mb-2">
@@ -205,13 +191,13 @@ const content = {
           >
             Chi tiết sản phẩm
           </button>
-          <!-- <button
+           <button
             id="care-tab"
-            class="tab-button border-b-2 border-transparent text-gray-500 hover:text-gray-700 px-1 py-4 text-sm font-medium"
+            class="tab-button border-b-2 border-transparent text-gray-500 hover:text-gray-700 px-1 py-4 text-sm font-medium cursor-pointer"
           >
-            Care Instructions
+            Video sản phẩm
           </button>
-          <button
+          <!-- <button
             id="shipping-tab"
             class="tab-button border-b-2 border-transparent text-gray-500 hover:text-gray-700 px-1 py-4 text-sm font-medium"
           >
@@ -226,33 +212,39 @@ const content = {
       >
         <ul class="pl-0 text-gray-700 space-y-2">
             <li><strong>🔹 Mô tả tổng thể:</strong>
-              <ul class="pl-8">
-                <li><strong>Kiểu dáng:</strong> Bộ đồ ngủ gồm áo ngắn tay và quần short dáng rộng.</li>
-                <li><strong>Màu sắc:</strong> Màu kem nhạt chủ đạo, mang lại cảm giác dịu mắt, thư giãn.</li>
-                <li><strong>Họa tiết:</strong> In hình những chú gấu bông, nơ, trái cherry... màu tím nhạt – tạo phong cách dễ thương và nhẹ nhàng.</li>
-                <li><strong>Chất liệu:</strong> Vải cotton tre mềm mại, mỏng nhẹ, thoáng mát – rất phù hợp mặc trong nhà hoặc khi ngủ.</li>
-              </ul>
+                <li><strong>Thiết kế:</strong> Bộ đồ ngủ gồm áo ngắn tay và quần short dáng rộng.</li>
+                <li><strong>Màu sắc:</strong> Màu kem nhạt nhẹ nhàng, mang lại cảm giác thư thái.</li>
+                <li><strong>Họa tiết:</strong> In hình chú cún con màu hồng, chữ “Sweet” màu xanh baby và nơ hồng – tất cả tạo nên tổng thể rất ngọt ngào, đáng yêu.</li>
             </li>
           
             <li><strong>🔹 Chi tiết thiết kế:</strong>
               <ul class="pl-8">
-                  <ul>
-                    <li><strong>Cổ áo:</strong> Cổ tròn bo tròn nhẹ kiểu Peter Pan, tăng thêm nét ngọt ngào và nữ tính.</li>
-                    <li><strong>Tay áo:</strong> Tay ngắn, hơi rộng, thoải mái khi vận động.</li>
-                    <li><strong>Cúc áo:</strong> Cài nút phía trước, dễ mặc và dễ thay đồ.</li>
-                    <li><strong>Túi áo:</strong> Có 1 túi nhỏ phía ngực bên trái, tăng tính tiện dụng.</li>
-                  </ul>
-                  <ul>
-                    <li><strong>Dáng quần:</strong> Quần short dáng rộng, lưng thun co giãn thoải mái.</li>
-                    <li><strong>Độ dài:</strong> Trên đầu gối, thích hợp cho mùa hè hoặc khí hậu nóng.</li>
-                  </ul>
+                    <li><strong>Cổ áo:</strong> Cổ tròn kiểu Peter Pan, bo nhẹ viền cổ, tăng độ nữ tính và dễ thương.</li>
+                    <li><strong>Tay áo:</strong> Tay ngắn, rộng rãi, mát mẻ khi mặc ngủ.</li>
+                    <li><strong>Nút cài:</strong> Cài nút phía trước, dễ mặc và tiện lợi.</li>
+                    <li><strong>Túi ngực:</strong> Có một túi nhỏ phía trước ngực trái, tăng tính năng động cho thiết kế.</li>
+                    <li><strong>Dáng quần:</strong> Short dáng rộng, ống hơi suông thoải mái.</li>
+                    <li><strong>Lưng thun:</strong> Co giãn linh hoạt, dễ chịu trong mọi tư thế nằm – ngồi – duỗi người.</li>
+                    <li><strong>Túi hai bên:</strong> Tiện lợi cho việc cất điện thoại hoặc các vật nhỏ.</li>
+                  
               </ul>
             </li>
           
-            <li><strong>🔹 Phong cách:</strong> Dễ thương (cute), vintage nhẹ, trẻ trung và nữ tính.
+            <li><strong>🔹 Phong cách phù hợp:</strong>Cute, ngọt ngào, pha chút baby Hàn Quốc.
             </li>
+            <li><strong>🔹 Size:</strong>
+              <img
+                src={'size/' + '1.png'}
+                alt={'size'}
+                class="w-3/10 h-3/10object-cover shadow mt-4"
+              />
+            </li>
+          </ul>
+          
         </ul>
       </div>
+
+    <hr class="my-10 h-0.5 border-t-0 bg-neutral-200 dark:bg-white/40" />
 
       <!-- <div
         id="care-content"
@@ -458,7 +450,9 @@ const content = {
 
       <div class={`grid grid-cols-5 md:grid-cols-5 gap-4 sm:gap-6`}>
         {relatedProduct.map((otherProduct) => (
-            <div
+            <a
+              href={otherProduct.link}
+              target="_blank"
               class="product-card bg-white rounded-lg overflow-hidden shadow-sm transition duration-300 hover:shadow-md"
             >
               <div class="relative pb-[125%] overflow-hidden">
@@ -479,7 +473,7 @@ const content = {
                 </h3>
                 <p class="text-pink-300 font-medium">{otherProduct.price}</p>
               </div>
-        </div>
+        </a>
         ))}
       </div>
     </div>

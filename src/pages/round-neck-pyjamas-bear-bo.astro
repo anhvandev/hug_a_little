@@ -4,39 +4,40 @@ import Navigation from "../components/Navigation.astro";
 import Footer from '../components/Footer.astro';
 import "../styles/product.scss";
 import { variationIndex } from '../store/product';
+import Purchase from "../components/Purchase.astro";
 
 const pathImage = 'website_image/';
 
 const relatedProduct = [{
-  name: 'Pyjamas Cổ Tròn',
+  name: 'Pyjamas Ngắn Gấu Nhỏ Vườn Hoa',
   price: '259.000',
-  img: '15.png',
-  link: '',
+  img: '24.png',
+  link: 'round-neck-pyjamas-bear-teddy',
 }, {
-  name: 'Pyjamas Cổ Tròn Nơ',
+  name: 'Pyjamas Ngắn Gấu Tím Dịu Dàng',
   price: '279.000',
-  img: '18.png',
-  link: ''
+  img: '25.png',
+  link: 'round-neck-pyjamas-bear-paninton'
 },
 {
-  name: 'Bộ Pyjamas',
+  name: 'Pyjamas Ngắn Cún Hồng Ngọt Ngào Có Nơ',
   price: '279.000',
-  img: '21.png',
-  link: ''
+  img: '27.png',
+  link: 'round-neck-pyjamas-bear-neck-bo'
 }];
 
 const listVariations = [
   {
     imgs: [
-    '24.png',
+    '23.png',
     '11.png',
     '12.png',
     ],
-    name: 'Pyjamas Ngắn Gấu Bo'
+    name: 'Pyjamas Ngắn Cún Hồng Ngọt Ngào'
   }
 ]
 const content = {
-  name: 'Pyjamas Ngắn Gấu Bo',
+  name: 'Pyjamas Ngắn Cún Hồng Ngọt Ngào',
   price: '179.000',
   rawPrice: '320.000',
   discount: '12%',
@@ -158,22 +159,7 @@ const content = {
             </div>
           </div> -->
 
-          <div class="mb-8 mt-8">
-            <h3 class="text-sm font-semibold text-gray-800 mb-2">SIZE: FreeSize</h3>
-            <a
-              href="#"
-              class="text-pink-300 text-sm mt-2 inline-block hover:underline"
-              >View Size Chart</a
-            >
-          </div>
-
-          <div class="flex flex-col sm:flex-row gap-3 mb-6 w-1/2">
-            <button
-              class="bg-pink-300 hover:bg-pink-400 text-white px-6 py-3 rounded-full font-medium transition duration-300 flex-1 text-center touch-target"
-            >
-              <i class="fas fa-shopping-cart mr-2"></i> Mua ngay
-            </button>
-          </div>
+          <Purchase />
 
           <div class="border-t border-b border-gray-200 py-4">
             <div class="flex items-center justify-between mb-2">
@@ -204,13 +190,13 @@ const content = {
           >
             Chi tiết sản phẩm
           </button>
-          <!-- <button
+           <button
             id="care-tab"
-            class="tab-button border-b-2 border-transparent text-gray-500 hover:text-gray-700 px-1 py-4 text-sm font-medium"
+            class="tab-button border-b-2 border-transparent text-gray-500 hover:text-gray-700 px-1 py-4 text-sm font-medium cursor-pointer"
           >
-            Care Instructions
+            Video sản phẩm
           </button>
-          <button
+          <!-- <button
             id="shipping-tab"
             class="tab-button border-b-2 border-transparent text-gray-500 hover:text-gray-700 px-1 py-4 text-sm font-medium"
           >
@@ -245,10 +231,19 @@ const content = {
           
             <li><strong>🔹 Phong cách phù hợp:</strong>Cute, ngọt ngào, pha chút baby Hàn Quốc.
             </li>
+            <li><strong>🔹 Size:</strong>
+              <img
+                src={'size/' + '1.png'}
+                alt={'size'}
+                class="w-3/10 h-3/10object-cover shadow mt-4"
+              />
+            </li>
           </ul>
           
         </ul>
       </div>
+
+    <hr class="my-10 h-0.5 border-t-0 bg-neutral-200 dark:bg-white/40" />
 
       <!-- <div
         id="care-content"
@@ -454,8 +449,11 @@ const content = {
 
       <div class={`grid grid-cols-5 md:grid-cols-5 gap-4 sm:gap-6`}>
         {relatedProduct.map((otherProduct) => (
-            <div
+            <a
+              href={otherProduct.link}
+              target="_blank"
               class="product-card bg-white rounded-lg overflow-hidden shadow-sm transition duration-300 hover:shadow-md"
+              
             >
               <div class="relative pb-[125%] overflow-hidden">
                 <img
@@ -475,7 +473,7 @@ const content = {
                 </h3>
                 <p class="text-pink-300 font-medium">{otherProduct.price}</p>
               </div>
-        </div>
+            </a>
         ))}
       </div>
     </div>
