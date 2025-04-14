@@ -1,21 +1,18 @@
 services:
-  mysql:
-    image: mysql:8.0
-    command: --default-authentication-plugin=mysql_native_password
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-    ports:
-      - "127.0.0.1:5578:3306"
+  database:
+    image: postgis/postgis:13-master
     volumes:
-      - mysql_volume:/var/lib/mysql
+      - postgis_volume:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_PASSWORD}
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "directus", "-pdirectus"]
-      interval: 30s
-      timeout: 10s
+      test: ["CMD", "pg_isready", "--host=localhost", "--username=directus"]
+      interval: 10s
+      timeout: 5s
       retries: 5
+      start_interval: 5s
       start_period: 30s
 
   cache:
@@ -40,6 +37,8 @@ services:
         condition: service_healthy
       cache:
         condition: service_healthy
+      database:
+        condition: service_healthy
     environment:
       SECRET: ${SECRET}
 
@@ -62,4 +61,4 @@ services:
       PUBLIC_URL: ${PUBLIC_URL}
 
 volumes:
-  mysql_volume:
+  postgis_volume:
