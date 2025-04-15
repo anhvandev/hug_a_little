@@ -11,19 +11,19 @@ const pathImage = "website_image/";
 const relatedProduct = [
   {
     name: "Pyjamas Ngắn Gấu Nâu Có Nơ",
-    price: "299.000",
+    price: "279.000",
     img: "30.png",
     link: "round-pyjamas-bear-neck-teddy",
   },
   {
     name: "Pyjamas Ngắn Gấu Tím",
-    price: "289.000",
+    price: "279.000",
     img: "25.png",
     link: "round-pyjamas-bear-paninton",
   },
   {
     name: "Pyjamas Ngắn Gấu Hồng",
-    price: "289.000",
+    price: "279.000",
     img: "24.png",
     link: "round-pyjamas-bear-bo",
   },
@@ -37,7 +37,7 @@ const listVariations = [
 ];
 const content = {
   name: "Pyjamas Ngắn Gấu Nâu",
-  price: "289.000",
+  price: "279.000",
   rawPrice: "400.000",
   discount: "12%",
   description: [
@@ -58,16 +58,8 @@ const content = {
   <div class="bg-pink-50 py-3">
     <div class="container mx-auto px-4 sm:px-6">
       <div class="text-sm text-gray-600">
-        <a
-          href="#"
-          class="hover:text-pink-300"
-          >Trang chủ</a
-        >
-        <a
-          href="#"
-          class="hover:text-pink-300"
-          >/</a
-        >
+        <a href="#" class="hover:text-pink-300">Trang chủ</a>
+        <a href="#" class="hover:text-pink-300">/</a>
         <span class="text-pink-300">{content.name}</span>
       </div>
     </div>
@@ -160,7 +152,7 @@ const content = {
               >{
                 100 -
                   Math.round(
-                    (Number(content.price) / Number(content.rawPrice)) * 100
+                    (Number(content.price) / Number(content.rawPrice)) * 100,
                   )
               }% OFF</span
             >
@@ -243,10 +235,7 @@ const content = {
         </nav>
       </div>
 
-      <div
-        id="details-content"
-        class="tab-content active py-6"
-      >
+      <div id="details-content" class="tab-content active py-6">
         <div
           class="hidden"
           id="detail-tab-content"
@@ -346,9 +335,7 @@ const content = {
         <h2 class="text-2xl font-bold text-gray-800 heading-font">
           Sản phẩm bạn thích
         </h2>
-        <a
-          href="#"
-          class="text-pink-300 hover:text-pink-400 font-medium"
+        <a href="#" class="text-pink-300 hover:text-pink-400 font-medium"
           >Tất cả sản phẩm</a
         >
       </div>
@@ -393,7 +380,7 @@ const content = {
     import "../scripts/lazyload.ts";
 
     const tabsParent: HTMLElement = document.getElementById(
-      "tabs-example"
+      "tabs-example",
     ) as HTMLElement;
     const tabElements: TabItem[] = [
       {
@@ -427,7 +414,7 @@ const content = {
       tabsParent,
       tabElements,
       options,
-      instanceOptions
+      instanceOptions,
     );
 
     // core version + navigation, pagination modules:

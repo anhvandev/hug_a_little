@@ -8,39 +8,37 @@ import Purchase from "../components/Purchase.astro";
 
 const pathImage = "website_image/";
 
-const relatedProduct = [{
-  name: 'Pyjamas Ngắn Gấu Nâu',
-  price: '289.000',
-  img: '30.png',
-  link: 'round-pyjamas-bear-neck-teddy',
-}, {
-  name: 'Pyjamas Ngắn Gấu Tím',
-  price: '289.000',
-  img: '25.png',
-  link: 'round-pyjamas-bear-paninton'
-},
-{
-  name: 'Pyjamas Ngắn Gấu Hồng Có Nơ',
-  price: '299.000',
-  img: '27.png',
-  link: 'round-pyjamas-bear-neck-bo'
-}];
+const relatedProduct = [
+  {
+    name: "Pyjamas Ngắn Gấu Nâu",
+    price: "279.000",
+    img: "30.png",
+    link: "round-pyjamas-bear-neck-teddy",
+  },
+  {
+    name: "Pyjamas Ngắn Gấu Tím",
+    price: "279.000",
+    img: "25.png",
+    link: "round-pyjamas-bear-paninton",
+  },
+  {
+    name: "Pyjamas Ngắn Gấu Hồng Có Nơ",
+    price: "279.000",
+    img: "27.png",
+    link: "round-pyjamas-bear-neck-bo",
+  },
+];
 const listVariations = [
   {
-    imgs: [
-    '22.png',
-    '61.jpg',
-    '62.jpg',
-    '60.jpg',
-    ],
-    name: 'Pyjamas Ngắn Gấu Tím Có Nơ'
-  }
-]
+    imgs: ["22.png", "61.jpg", "62.jpg", "60.jpg"],
+    name: "Pyjamas Ngắn Gấu Tím Có Nơ",
+  },
+];
 const content = {
-  name: 'Pyjamas Ngắn Gấu Tím Có Nơ',
-  price: '299',
-  rawPrice: '412',
-  discount: '12%',
+  name: "Pyjamas Ngắn Gấu Tím Có Nơ",
+  price: "279",
+  rawPrice: "412",
+  discount: "12%",
   description: [
     "° Chất liệu: Vải cotton thô tự nhiên, mỏng nhẹ, thoáng khí, thấm hút mồ hôi tốt mềm mại và thoáng mát, mang lại cảm giác dễ chịu khi mặc.",
     "° Phong cách đơn giản và trẻ trung, phù hợp cho mùa hè, có thể đi chơi ra ngoài ˙ᵕ˙",
@@ -58,16 +56,8 @@ const content = {
   <div class="bg-pink-50 py-3">
     <div class="container mx-auto px-4 sm:px-6">
       <div class="text-sm text-gray-600">
-        <a
-          href="#"
-          class="hover:text-pink-300"
-          >Trang chủ</a
-        >
-        <a
-          href="#"
-          class="hover:text-pink-300"
-          >/</a
-        >
+        <a href="#" class="hover:text-pink-300">Trang chủ</a>
+        <a href="#" class="hover:text-pink-300">/</a>
         <span class="text-pink-300">{content.name}</span>
       </div>
     </div>
@@ -136,11 +126,20 @@ const content = {
           </h1>
 
           <div class="mb-6">
-            <span class="text-2xl font-bold text-pink-300">{content.price + '.000'}</span>
-            <span class="ml-2 text-gray-500 line-through">{content.rawPrice + '.000'}</span>
+            <span class="text-2xl font-bold text-pink-300"
+              >{content.price + ".000"}</span
+            >
+            <span class="ml-2 text-gray-500 line-through"
+              >{content.rawPrice + ".000"}</span
+            >
             <span
               class="ml-2 text-pink-300 bg-pink-100 px-2 py-1 rounded text-sm"
-              >{100 - Math.round((Number(content.price) / Number(content.rawPrice) * 100))}% OFF</span
+              >{
+                100 -
+                  Math.round(
+                    (Number(content.price) / Number(content.rawPrice)) * 100,
+                  )
+              }% OFF</span
             >
           </div>
           <p class="text-gray-700 font-bold mb-2">✿ Chi Tiết Sản Phẩm:</p>
@@ -207,10 +206,7 @@ const content = {
         </nav>
       </div>
 
-      <div
-        id="details-content"
-        class="tab-content active py-6"
-      >
+      <div id="details-content" class="tab-content active py-6">
         <div
           class="hidden"
           id="detail-tab-content"
@@ -311,9 +307,7 @@ const content = {
         <h2 class="text-2xl font-bold text-gray-800 heading-font">
           Sản phẩm bạn thích
         </h2>
-        <a
-          href="#"
-          class="text-pink-300 hover:text-pink-400 font-medium"
+        <a href="#" class="text-pink-300 hover:text-pink-400 font-medium"
           >Tất cả sản phẩm</a
         >
       </div>
@@ -359,7 +353,7 @@ const content = {
     import "../scripts/lazyload.ts";
 
     const tabsParent: HTMLElement = document.getElementById(
-      "tabs-example"
+      "tabs-example",
     ) as HTMLElement;
     const tabElements: TabItem[] = [
       {
@@ -393,7 +387,7 @@ const content = {
       tabsParent,
       tabElements,
       options,
-      instanceOptions
+      instanceOptions,
     );
 
     // core version + navigation, pagination modules:

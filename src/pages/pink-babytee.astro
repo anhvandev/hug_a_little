@@ -6,19 +6,22 @@ import "../styles/product.scss";
 import { variationIndex } from "../store/product";
 import Purchase from "../components/Purchase.astro";
 
-const pathImage = 'website_image/';
+const pathImage = "website_image/";
 
-const relatedProduct = [{
-  name: 'Pyjamas Ngắn Gấu Tím',
-  price: '299.000',
-  img: '22.png',
-  link: 'round-pyjamas-bear-neck-paninton'
-}, {
-  name: 'Pyjamas Ngắn Gấu Nâu',
-  price: '289.000',
-  img: '24.png',
-  link: 'round-pyjamas-bear-teddy',
-}];
+const relatedProduct = [
+  {
+    name: "Pyjamas Ngắn Gấu Tím",
+    price: "279.000",
+    img: "22.png",
+    link: "round-pyjamas-bear-neck-paninton",
+  },
+  {
+    name: "Pyjamas Ngắn Gấu Nâu",
+    price: "279.000",
+    img: "24.png",
+    link: "round-pyjamas-bear-teddy",
+  },
+];
 
 const listVariations = [
   {
@@ -38,10 +41,10 @@ const listVariations = [
   },
 ];
 const content = {
-  name: 'Baby Tee Hồng',
-  price: '179',
-  rawPrice: '300',
-  discount: '12%',
+  name: "Baby Tee Hồng",
+  price: "179",
+  rawPrice: "300",
+  discount: "12%",
   description: [
     "° Chất liệu: Vải thun gân cotton lạnh hàn 4 chiều mềm mại và thoáng mát, mang lại cảm giác dễ chịu khi mặc.",
     "° Phong cách đơn giản và trẻ trung, phù hợp cho mùa hè ˙ᵕ˙",
@@ -59,16 +62,8 @@ const content = {
   <div class="bg-pink-50 py-3">
     <div class="container mx-auto px-4 sm:px-6">
       <div class="text-sm text-gray-600">
-        <a
-          href="#"
-          class="hover:text-pink-300"
-          >Trang chủ</a
-        >
-        <a
-          href="#"
-          class="hover:text-pink-300"
-          >/</a
-        >
+        <a href="#" class="hover:text-pink-300">Trang chủ</a>
+        <a href="#" class="hover:text-pink-300">/</a>
         <span class="text-pink-300">Baby Tee Hồng</span>
       </div>
     </div>
@@ -137,11 +132,20 @@ const content = {
           </h1>
 
           <div class="mb-6">
-            <span class="text-2xl font-bold text-pink-300">{content.price + '.000'}</span>
-            <span class="ml-2 text-gray-500 line-through">{content.rawPrice + '.000'}</span>
+            <span class="text-2xl font-bold text-pink-300"
+              >{content.price + ".000"}</span
+            >
+            <span class="ml-2 text-gray-500 line-through"
+              >{content.rawPrice + ".000"}</span
+            >
             <span
               class="ml-2 text-pink-300 bg-pink-100 px-2 py-1 rounded text-sm"
-              >{100 - Math.round((Number(content.price) / Number(content.rawPrice) * 100))}% OFF</span
+              >{
+                100 -
+                  Math.round(
+                    (Number(content.price) / Number(content.rawPrice)) * 100,
+                  )
+              }% OFF</span
             >
           </div>
           <p class="text-gray-700 font-bold mb-2">✿ Chi Tiết Sản Phẩm:</p>
@@ -208,10 +212,7 @@ const content = {
         </nav>
       </div>
 
-      <div
-        id="details-content"
-        class="tab-content active py-6"
-      >
+      <div id="details-content" class="tab-content active py-6">
         <div
           class="hidden"
           id="detail-tab-content"
@@ -457,20 +458,18 @@ const content = {
         <h2 class="text-2xl font-bold text-gray-800 heading-font">
           Sản phẩm bạn thích
         </h2>
-        <a
-          href="#"
-          class="text-pink-300 hover:text-pink-400 font-medium"
+        <a href="#" class="text-pink-300 hover:text-pink-400 font-medium"
           >Tất cả sản phẩm</a
         >
       </div>
 
       <div class={`grid grid-cols-5 md:grid-cols-5 gap-4 sm:gap-6`}>
-        {relatedProduct.map((otherProduct) => (
+        {
+          relatedProduct.map((otherProduct) => (
             <a
               href={otherProduct.link}
               target="_blank"
               class="product-card bg-white rounded-lg overflow-hidden shadow-sm transition duration-300 hover:shadow-md"
-              
             >
               <div class="relative pb-[125%] overflow-hidden">
                 <img
@@ -488,8 +487,9 @@ const content = {
                 </h3>
                 <p class="text-pink-300 font-medium">{otherProduct.price}</p>
               </div>
-        </a>
-        ))}
+            </a>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -504,7 +504,7 @@ const content = {
     import "../scripts/lazyload.ts";
 
     const tabsParent: HTMLElement = document.getElementById(
-      "tabs-example"
+      "tabs-example",
     ) as HTMLElement;
     const tabElements: TabItem[] = [
       {
@@ -538,7 +538,7 @@ const content = {
       tabsParent,
       tabElements,
       options,
-      instanceOptions
+      instanceOptions,
     );
 
     // core version + navigation, pagination modules:

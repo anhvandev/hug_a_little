@@ -8,39 +8,37 @@ import Purchase from "../components/Purchase.astro";
 
 const pathImage = "website_image/";
 
-const relatedProduct = [{
-  name: 'Pyjamas Ngắn Gấu Hồng',
-  price: '289.000',
-  img: '24.png',
-  link: 'round-pyjamas-bear-bo',
-}, {
-  name: 'Pyjamas Ngắn Gấu Tím Có Nơ',
-  price: '299.000',
-  img: '22.png',
-  link: 'round-pyjamas-bear-neck-paninton'
-},
-{
-  name: 'Pyjamas Ngắn Gấu Nâu',
-  price: '299.000',
-  img: '32.png',
-  link: 'round-pyjamas-bear-teddy'
-}];
+const relatedProduct = [
+  {
+    name: "Pyjamas Ngắn Gấu Hồng",
+    price: "279.000",
+    img: "24.png",
+    link: "round-pyjamas-bear-bo",
+  },
+  {
+    name: "Pyjamas Ngắn Gấu Tím Có Nơ",
+    price: "279.000",
+    img: "22.png",
+    link: "round-pyjamas-bear-neck-paninton",
+  },
+  {
+    name: "Pyjamas Ngắn Gấu Nâu",
+    price: "279.000",
+    img: "32.png",
+    link: "round-pyjamas-bear-teddy",
+  },
+];
 
 const listVariations = [
   {
-    imgs: [
-    '30.png',
-    '55.jpg',
-    '56.JPG',
-    '57.JPG',
-    ],
-    name: 'Pyjamas Ngắn Gấu Nâu Có Nơ'
-  }
-]
+    imgs: ["30.png", "55.jpg", "56.JPG", "57.JPG"],
+    name: "Pyjamas Ngắn Gấu Nâu Có Nơ",
+  },
+];
 const content = {
-  name: 'Pyjamas Ngắn Gấu Nâu Có Nơ',
-  price: '299',
-  rawPrice: '412',
+  name: "Pyjamas Ngắn Gấu Nâu Có Nơ",
+  price: "279",
+  rawPrice: "412",
   description: [
     "° Chất liệu: Vải cotton thô tự nhiên, mỏng nhẹ, thoáng khí, thấm hút mồ hôi tốt mềm mại và thoáng mát, mang lại cảm giác dễ chịu khi mặc.",
     "° Thiết kế thời trang: Set ngủ Basic đơn giản, có hoạ tiết gấu và nơ dễ thương, thoả mái khi mặc.",
@@ -59,16 +57,8 @@ const content = {
   <div class="bg-pink-50 py-3">
     <div class="container mx-auto px-4 sm:px-6">
       <div class="text-sm text-gray-600">
-        <a
-          href="#"
-          class="hover:text-pink-300"
-          >Trang chủ</a
-        >
-        <a
-          href="#"
-          class="hover:text-pink-300"
-          >/</a
-        >
+        <a href="#" class="hover:text-pink-300">Trang chủ</a>
+        <a href="#" class="hover:text-pink-300">/</a>
         <span class="text-pink-300">{content.name}</span>
       </div>
     </div>
@@ -137,11 +127,20 @@ const content = {
           </h1>
 
           <div class="mb-6">
-            <span class="text-2xl font-bold text-pink-300">{content.price + '.000'}</span>
-            <span class="ml-2 text-gray-500 line-through">{content.rawPrice + '.000'}</span>
+            <span class="text-2xl font-bold text-pink-300"
+              >{content.price + ".000"}</span
+            >
+            <span class="ml-2 text-gray-500 line-through"
+              >{content.rawPrice + ".000"}</span
+            >
             <span
               class="ml-2 text-pink-300 bg-pink-100 px-2 py-1 rounded text-sm"
-              >{100 - Math.round((Number(content.price) / Number(content.rawPrice) * 100))}% OFF</span
+              >{
+                100 -
+                  Math.round(
+                    (Number(content.price) / Number(content.rawPrice)) * 100,
+                  )
+              }% OFF</span
             >
           </div>
           <p class="text-gray-700 font-bold mb-2">✿ Chi Tiết Sản Phẩm:</p>
@@ -222,10 +221,7 @@ const content = {
         </nav>
       </div>
 
-      <div
-        id="details-content"
-        class="tab-content active py-6"
-      >
+      <div id="details-content" class="tab-content active py-6">
         <div
           class="hidden"
           id="detail-tab-content"
@@ -236,8 +232,14 @@ const content = {
             <li>
               <strong>🔹 Mô tả tổng thể:</strong>
               <ul class="pl-8">
-                <li><strong>Thiết kế:</strong> Bộ đồ ngủ gồm áo ngắn tay và quần short dáng rộng.</li>
-                <li><strong>Màu sắc:</strong> Màu kem nhạt nhẹ nhàng, mang lại cảm giác thư thái.</li>
+                <li>
+                  <strong>Thiết kế:</strong> Bộ đồ ngủ gồm áo ngắn tay và quần short
+                  dáng rộng.
+                </li>
+                <li>
+                  <strong>Màu sắc:</strong> Màu kem nhạt nhẹ nhàng, mang lại cảm
+                  giác thư thái.
+                </li>
               </ul>
             </li>
 
@@ -314,9 +316,7 @@ const content = {
         <h2 class="text-2xl font-bold text-gray-800 heading-font">
           Sản phẩm bạn thích
         </h2>
-        <a
-          href="#"
-          class="text-pink-300 hover:text-pink-400 font-medium"
+        <a href="#" class="text-pink-300 hover:text-pink-400 font-medium"
           >Tất cả sản phẩm</a
         >
       </div>
@@ -362,7 +362,7 @@ const content = {
     import "../scripts/lazyload.ts";
 
     const tabsParent: HTMLElement = document.getElementById(
-      "tabs-example"
+      "tabs-example",
     ) as HTMLElement;
     const tabElements: TabItem[] = [
       {
@@ -396,7 +396,7 @@ const content = {
       tabsParent,
       tabElements,
       options,
-      instanceOptions
+      instanceOptions,
     );
 
     // core version + navigation, pagination modules:
